@@ -9,14 +9,17 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import * as postService from './services/postService'
 
 const App = () => {
   const [posts, setPosts] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
-  const handleAddPost = newPostData => {
+  const handleAddPost = async newPostData => {
+    const newPost = await postService.create(newPostData)
     setPosts([...posts, newPostData])
+    navigate('/')
   }
 
   const handleLogout = () => {

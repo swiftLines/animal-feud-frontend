@@ -12,7 +12,7 @@ const AddPost = (props) => {
   }, [formData])
 
   const handleChange = evt => {
-    setFormData({ ...formData, [evt.target.content]: evt.target.value })
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
   const handleSubmit = evt => {
@@ -26,8 +26,8 @@ const AddPost = (props) => {
       <h1>AddPost</h1>
       <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
         <textarea
-          name="content"
-          value={formData.content}
+          
+          value={formData.name}
           onChange={handleChange}
           required
         />
