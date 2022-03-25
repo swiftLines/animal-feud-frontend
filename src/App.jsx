@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import './App.css'
 import AddPost from './pages/AddPost/AddPost'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -13,6 +14,10 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+
+  const handleAddPost = newPostData => {
+    setPosts([...posts, newPostData])
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -29,10 +34,22 @@ const App = () => {
       <NavBar user={user} handleLogout={handleLogout} />
       <main>
         <Routes>
-          <Route path="/" element={<Landing user={user} />} />
-          <Route
+        <Route
             path='/add'
-            element={<AddPost />}
+            element={
+              <AddPost 
+                handleAddPost={handleAddPost}
+              />
+            }
+        />
+          <Route 
+            path="/" 
+            element={
+              <Landing 
+                user={user}
+                posts={posts}  
+              />
+            } 
           />
           <Route
             path="/signup"
