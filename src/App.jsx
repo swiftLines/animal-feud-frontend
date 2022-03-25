@@ -9,6 +9,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 
 const App = () => {
+  const [posts, setPosts] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
