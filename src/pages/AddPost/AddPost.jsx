@@ -12,14 +12,13 @@ const AddPost = (props) => {
   }, [formData])
 
   const handleChange = evt => {
-    setFormData({ ...formData, [evt.target.content]: evt.target.value })
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
   const handleSubmit = evt => {
     evt.preventDefault()
     props.handleAddPost(formData)
   }
-
 
   return (
     <>
