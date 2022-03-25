@@ -18,9 +18,11 @@ const App = () => {
 
   const handleAddPost = async newPostData => {
     const newPost = await postService.create(newPostData)
-    setPosts([...posts, newPostData])
+    console.log(newPost)
+    setPosts([...posts, newPost])
     navigate('/')
   }
+  console.log(posts)
 
   const handleLogout = () => {
     authService.logout()

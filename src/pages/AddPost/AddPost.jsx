@@ -1,8 +1,5 @@
 import { useState, useRef, useEffect, } from "react"
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Paper from '@mui/material/Paper'
-import TextField from '@mui/material/TextField'
+
 
 const AddPost = (props) => {
   const formElement = useRef()
@@ -21,9 +18,8 @@ const AddPost = (props) => {
   
   const handleSubmit = evt => {
     evt.preventDefault()
-    const postFormData = new FormData()
-    postFormData.append('content', formData.content)
-    props.handleAddPost(postFormData)
+
+    props.handleAddPost(formData)
   }
 
   return (
