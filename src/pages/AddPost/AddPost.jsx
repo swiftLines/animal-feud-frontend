@@ -9,7 +9,7 @@ const AddPost = (props) => {
   })
 
   useEffect(() => {
-    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+    formElement.current.checkValidity()  ? setValidForm(true) : setValidForm(false)
   }, [formData])
 
   const handleChange = evt => {

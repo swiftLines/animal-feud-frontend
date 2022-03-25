@@ -18,7 +18,6 @@ const App = () => {
 
   const handleAddPost = async newPostData => {
     const newPost = await postService.create(newPostData)
-    console.log(newPost)
     setPosts([...posts, newPost])
     navigate('/')
   }
