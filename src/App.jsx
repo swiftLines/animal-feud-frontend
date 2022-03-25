@@ -21,6 +21,7 @@ const App = () => {
     setPosts([...posts, newPost])
     navigate('/')
   }
+  console.log(posts)
 
   const handleLogout = () => {
     authService.logout()
