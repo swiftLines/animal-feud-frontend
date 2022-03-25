@@ -8,7 +8,7 @@ const AddPost = (props) => {
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
-    content: ''
+    content: '',
   })
 
   useEffect(() => {
@@ -18,20 +18,23 @@ const AddPost = (props) => {
   const handleChange = evt => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
-
+  
   const handleSubmit = evt => {
     evt.preventDefault()
-    props.handleAddPost(formData)
+    const postFormData = new FormData()
+    postFormData.append('content', formData.content)
+    props.handleAddPost(postFormData)
   }
-
 
   return (
     <>
       <h1>AddPost</h1>
       <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
-        <textarea
-          
-          value={formData.name}
+        <input
+          type="text"
+          name="content"
+          id="post-content"
+          value={formData.content}
           onChange={handleChange}
           required
         />
