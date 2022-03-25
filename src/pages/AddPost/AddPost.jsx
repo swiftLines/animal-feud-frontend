@@ -8,7 +8,7 @@ const AddPost = (props) => {
   })
 
   useEffect(() => {
-    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+    formElement.current.checkValidity()  ? setValidForm(true) : setValidForm(false)
   }, [formData])
 
   const handleChange = evt => {
@@ -25,6 +25,10 @@ const AddPost = (props) => {
       <h1>AddPost</h1>
       <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
         <textarea
+          type='text'
+          className='form-control'
+          id='content-input'
+          name='content'
           value={formData.content}
           onChange={handleChange}
           required
