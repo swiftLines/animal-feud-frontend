@@ -25,7 +25,6 @@ const AddPost = (props) => {
       <h1>AddPost</h1>
       <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
         <textarea
-          name="content"
           value={formData.content}
           onChange={handleChange}
           required
