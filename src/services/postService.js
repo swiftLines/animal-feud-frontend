@@ -12,16 +12,16 @@ function create(post){
   .then(res => res.json)
 }
 
-function getAll(){
-  return fetch(BASE_URL, {
-    headers: {
-      'Authorization' : `Bearer ${tokenService.getToken()}`
-    },
-  })
-  .then(res => res.json)
-}
+// function getAll(){
+//   return fetch(BASE_URL, {
+//     headers: {
+//       'Authorization' : `Bearer ${tokenService.getToken()}`
+//     },
+//   })
+//   .then(res => res.json)
+// }
 
 export {
   create,
-  getAll
+  // getAll
 }
