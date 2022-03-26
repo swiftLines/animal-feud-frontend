@@ -33,7 +33,7 @@ function getAll(){
       'Authorization' : `Bearer ${tokenService.getToken()}`
     },
   })
-  .then(res => res.json)
+  .then(res => res.json())
 }
 
 export {

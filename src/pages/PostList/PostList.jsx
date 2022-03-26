@@ -5,7 +5,7 @@ const PostList = (props) => {
       <div>
         {props.posts.map(post => (
           <div key={post._id}>
-            <p>post.content</p>
+            <p>props.post.content</p>
           </div>
         ))}
       </div>
