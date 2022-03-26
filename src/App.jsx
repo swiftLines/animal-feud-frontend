@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import './App.css'
 import AddPost from './pages/AddPost/AddPost'
+import PostList from './pages/PostList/PostList'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -59,6 +60,14 @@ useEffect (() => {
                 posts={posts}  
               />
             } 
+          />
+          <Route
+            path='/thread'
+            element={
+              <PostList
+                posts={posts}  
+              />
+            }
           />
           <Route
             path="/signup"
