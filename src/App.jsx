@@ -57,7 +57,7 @@ useEffect (() => {
             path='/thread'
             element={
               <PostThread 
-                posts={posts}
+                
               />
             }
         />
