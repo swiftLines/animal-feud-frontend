@@ -13,7 +13,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as postService from './services/postService'
 import * as commentService from './services/commentService'
-import axios from 'axios'
+
 
 const App = () => {
   const [posts, setPosts] = useState([])
