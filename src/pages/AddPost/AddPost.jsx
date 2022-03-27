@@ -18,7 +18,6 @@ const AddPost = (props) => {
   
   const handleSubmit = evt => {
     evt.preventDefault()
-
     props.handleAddPost(formData)
   }
 
@@ -26,7 +25,7 @@ const AddPost = (props) => {
     <>
       <h1>AddPost</h1>
       <form autoComplete='off' ref={formElement} onSubmit={handleSubmit}>
-        <input
+        <textarea
           type="text"
           name="content"
           id="post-content"

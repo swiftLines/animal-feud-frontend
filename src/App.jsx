@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import './App.css'
 import AddPost from './pages/AddPost/AddPost'
+import PostList from './pages/PostList/PostList'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -15,6 +16,11 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+
+useEffect (() => {
+  postService.getAll()
+  .then(allPosts => setPosts(allPosts))
+}, [])
 
   const handleAddPost = async newPostData => {
     const newPost = await postService.create(newPostData)
@@ -54,6 +60,14 @@ const App = () => {
                 posts={posts}  
               />
             } 
+          />
+          <Route
+            path='/thread'
+            element={
+              <PostList
+                posts={posts}  
+              />
+            }
           />
           <Route
             path="/signup"
