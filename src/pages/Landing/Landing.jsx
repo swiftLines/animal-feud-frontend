@@ -1,5 +1,5 @@
 import styles from './Landing.module.css'
-import { SketchPicker } from 'react-color'
+// import { SketchPicker } from 'react-color'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import SignupForm from '../../components/SignupForm/SignupForm'
 import { Button } from '@mui/material'
