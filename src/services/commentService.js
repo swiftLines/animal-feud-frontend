@@ -1,27 +1,14 @@
 import * as tokenService from './tokenService'
-import  axios  from 'axios'
-const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/posts`
+const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/comments`
 
-// function create(post){
-//   console.log(post)
-//   return fetch(BASE_URL, {
-//     method: 'POST',
-//     headers: {
-//       'content-type': 'application/json',
-//       'Authorization' : `Bearer ${tokenService.getToken()}`
-//     },
-//     body: JSON.stringify(post)
-//   })
-//   .then(res => res.json)
-// }
-async function create(post){
+async function create(comment){
   const res = await fetch(BASE_URL, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
       'Authorization' : `Bearer ${tokenService.getToken()}`
     },
-    body: JSON.stringify(post)
+    body: JSON.stringify(comment)
   })
   const data = await res.json()
   console.log(data)
@@ -39,5 +26,5 @@ function getAll(){
 
 export {
   create,
-  getAll
+  getAll,
 }
