@@ -8,6 +8,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import PostThread from './pages/PostThread/PostThread'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as postService from './services/postService'
@@ -25,7 +26,7 @@ useEffect (() => {
   const handleAddPost = async newPostData => {
     const newPost = await postService.create(newPostData)
     setPosts([...posts, newPost])
-    navigate('/')
+    navigate('/feed')
   }
   console.log(posts)
 
@@ -52,6 +53,14 @@ useEffect (() => {
               />
             }
         />
+        <Route
+            path='/thread'
+            element={
+              <PostThread 
+                
+              />
+            }
+        />
           <Route 
             path="/" 
             element={
@@ -62,7 +71,7 @@ useEffect (() => {
             } 
           />
           <Route
-            path='/thread'
+            path='/feed'
             element={
               <PostList
                 posts={posts}  
