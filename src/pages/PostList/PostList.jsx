@@ -1,12 +1,17 @@
+import PostCard from "../../components/PostCard/PostCard";
+
 const PostList = (props) => {
   return (
     <>
-      <h1>Post Thread</h1>
+      <h1>Post Feed</h1>
       <div>
         {props.posts.map(post => (
-          <div key={post._id}>
-            <p>{post.content}</p>
-          </div>
+          <PostCard
+          key={post._id}
+          post={post}
+          
+          />
+
         ))}
       </div>
     </>
