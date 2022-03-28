@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper'
+
 
 const SignupForm = props => {
   const navigate = useNavigate()
@@ -43,63 +45,67 @@ const SignupForm = props => {
 
   return (
     <>
-
-<form>
-<div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
-        <input
-          type="text"
-          autoComplete="off"
-          id="name"
-          value={name}
-          name="name"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
-        <input
-          type="text"
-          autoComplete="off"
-          id="email"
-          value={email}
-          name="email"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="password"
-          value={password}
-          name="password"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="confirm" className={styles.label}>
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="confirm"
-          value={passwordConf}
-          name="passwordConf"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>
-          Sign Up
-        </button>
-        <Link to="/">
-          <button>Cancel</button>
-        </Link>
-      </div>
-    </form>
+    <Box
+     display="flex" 
+     justifyContent="center" 
+     alignItems="center"
+     sx={{ width: "50%" }}
+    >
+      <Paper 
+      elevation={4} sx={{ width: "100%", p: "1rem" }}
+      >
+        <form 
+        onSubmit={handleSubmit}
+        >
+          <TextField
+            autoComplete="off"
+             margin="normal"
+            fullWidth
+            required
+            label="Name"
+            type="text"
+            id="name"
+            value={name}
+            name="name"
+            onChange={handleChange}
+          />
+          <TextField
+             margin="normal"
+             fullWidth
+             required
+            type="text"
+            label="Email"
+            id="email"
+            value={email}
+            name="email"
+            onChange={handleChange}
+          />
+          <TextField
+           margin="normal"
+           fullWidth
+           required
+           label="Password"
+           type="password"
+           id="password"
+           value={password}
+           name="password"
+           onChange={handleChange}
+          />
+          <TextField
+           margin="normal"
+           fullWidth
+           required
+           label="Confirm Password"
+           type="password"
+           id="confirm"
+           value={passwordConf}
+           name="passwordConf"
+           onChange={handleChange}
+          />
+          <Button type="submit" disabled={isFormInvalid()}> Submit </Button>
+        </form>
+      </Paper>
+    </Box>
 
     </>
 
