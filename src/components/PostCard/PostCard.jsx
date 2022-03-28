@@ -32,7 +32,7 @@ function PostCard({post, user, handleDeletePost}) {
           <ShareIcon />
         </IconButton>
         <button
-        onClick={()=> handleDeletePost}
+        onClick={()=> handleDeletePost(post._id)}
         >
           delete
         </button>

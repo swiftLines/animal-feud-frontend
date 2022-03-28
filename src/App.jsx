@@ -4,6 +4,7 @@ import './App.css'
 import AddPost from './pages/AddPost/AddPost'
 import PostList from './pages/PostList/PostList'
 import NavBar from './components/NavBar/NavBar'
+import PostCard from './components/PostCard/PostCard'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
@@ -35,7 +36,7 @@ useEffect (() => {
   const handleDeletePost = id => {
     
     postService.deleteOne(id)
-    .then(deletedPost => setPosts(posts.filter(post => post._id !== id)))
+    setPosts(posts.filter(post => post._id !== id))
   }
 
   const handleLogout = () => {
