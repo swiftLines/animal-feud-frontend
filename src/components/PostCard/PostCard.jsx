@@ -11,6 +11,9 @@ import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import AddIcon from '@mui/icons-material/Add'
 import Fab from '@mui/material/Fab';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Icon } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit'
 
 
 function PostCard({post, user, handleDeletePost}) {
@@ -21,32 +24,35 @@ function PostCard({post, user, handleDeletePost}) {
           {post.owner.name} posted at {post.createdAt}
         </Typography>
         <Typography variant="h5" component="div">
-        <Link to="/thread">
-          <h2>{post.content}</h2>
-        </Link>
+          <Link to="/thread">
+            <h2>{post.content}</h2>
+          </Link>
         </Typography>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <Link
-          to='/edit'
-          state={{post}}
-        >
-          Edit
-        </Link>
-        <button
-        onClick={()=> handleDeletePost(post._id)}
-        >
-          delete
-        </button>
-
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+          <IconButton 
+            ria-label="delete"
+            onClick={()=> handleDeletePost(post._id)}
+            >
+            <DeleteIcon />
+          </IconButton>
+          <IconButton>
+            <Link
+            to='/edit'
+            state={{post}}
+            >
+              <EditIcon/>
+              </Link>
+            </IconButton>
       </CardContent>
     </Card>
   )
 }
+
           
 
 
