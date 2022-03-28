@@ -32,7 +32,6 @@ useEffect (() => {
     setPosts([...posts, newPost])
     navigate('/feed')
   }
-  console.log(posts)
 
   const handleDeletePost = id => {
     
@@ -60,6 +59,11 @@ useEffect (() => {
     setUser(authService.getUser())
   }
 
+  const handleGetThread = id => {
+    console.log(id)
+    postService.getThread(id)
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -77,7 +81,7 @@ useEffect (() => {
             path='/thread'
             element={
               <PostThread 
-                
+                handleGetThread={handleGetThread}
               />
             }
         />
