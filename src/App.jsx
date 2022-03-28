@@ -14,6 +14,7 @@ import * as authService from './services/authService'
 import * as postService from './services/postService'
 import * as commentService from './services/commentService'
 
+
 const App = () => {
   const [posts, setPosts] = useState([])
   const [user, setUser] = useState(authService.getUser())

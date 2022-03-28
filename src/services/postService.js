@@ -23,8 +23,19 @@ async function create(post){
     body: JSON.stringify(post)
   })
   const data = await res.json()
-  console.log(data)
   return data
+}
+
+
+function getThread(post) {
+  return fetch(`${BASE_URL}/${post.get('_id')}`, {
+    method: 'GET',
+    headers: {
+      'Authorization' : `Bearer ${tokenService.getToken()}`
+    },
+    body: JSON.stringify(post)
+  })
+  .then(res => res.json())
 }
 
 function getAll(){
@@ -38,5 +49,7 @@ function getAll(){
 
 export {
   create,
-  getAll
+  getAll,
+  getThread,
+
 }
