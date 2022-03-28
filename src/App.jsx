@@ -40,6 +40,16 @@ useEffect (() => {
     setPosts(posts.filter(post => post._id !== id))
   }
 
+  const handleUpdatePost = updatedPostData => {
+    postService.update(updatedPostData)
+    // .then(updatedPost => {
+    const newPostsArray = posts.map(post => 
+      post._id === updatedPostData._id ? updatedPostData : post)
+    setPosts(newPostsArray)
+    navigate('/feed')
+  // })
+  }
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -95,7 +105,10 @@ useEffect (() => {
           />
           <Route
             path='/edit'
-            element={<EditPost />}
+            element={
+            <EditPost 
+              handleUpdatePost={handleUpdatePost}
+            />}
           />  
           <Route
             path="/signup"
