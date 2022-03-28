@@ -57,9 +57,21 @@ function deleteOne(id) {
   .then(res => res.json())
 }
 
+function update(post) {
+  return fetch(`${BASE_URL}/${post._id}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: post
+  })
+  .then(res => res.json())
+}
+
 export {
   create,
   getAll,
   getThread,
-  deleteOne
+  deleteOne,
+  update
 }
