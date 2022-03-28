@@ -61,9 +61,9 @@ function update(post) {
   return fetch(`${BASE_URL}/${post._id}`, {
     method: 'PUT',
     headers: {
+      'content-type': 'application/json',
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
-    body: post
   })
   .then(res => res.json())
 }
