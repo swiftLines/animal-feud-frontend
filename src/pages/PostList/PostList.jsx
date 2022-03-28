@@ -11,8 +11,6 @@ import AddIcon from '@mui/icons-material/Add';
 import Tooltip from '@mui/material/Tooltip';
 
 
-
-
 const PostList = (props) => {
   const StyledFab = styled(Fab)({
     position: 'absolute',
@@ -29,6 +27,7 @@ const PostList = (props) => {
           <PostCard
           key={post._id}
           post={post}
+          handleDeletePost={props.handleDeletePost}
           
           />
 
