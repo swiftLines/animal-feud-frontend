@@ -32,6 +32,12 @@ useEffect (() => {
   }
   console.log(posts)
 
+  const handleDeletePost = id => {
+    
+    postService.deleteOne(id)
+    .then(deletedPost => setPosts(posts.filter(post => post._id !== id)))
+  }
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -75,9 +81,14 @@ useEffect (() => {
           <Route
             path='/feed'
             element={
+              user ?
               <PostList
-                posts={posts}  
+                posts={posts} 
+                handleDeletePost={handleDeletePost}
+                user={user} 
               />
+              :
+              <Navigate to='/login' />
             }
           />
           <Route

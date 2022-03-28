@@ -13,7 +13,7 @@ import AddIcon from '@mui/icons-material/Add'
 import Fab from '@mui/material/Fab';
 
 
-function PostCard({post}) {
+function PostCard({post, user, handleDeletePost}) {
   return(
     <Card sx={{ width: 700, m: 1 }}>
       <CardContent>
@@ -31,6 +31,12 @@ function PostCard({post}) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+        <button
+        onClick={()=> handleDeletePost}
+        >
+          delete
+        </button>
+
       </CardContent>
     </Card>
   )
