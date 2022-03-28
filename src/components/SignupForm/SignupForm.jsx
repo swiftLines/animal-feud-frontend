@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
 
 const SignupForm = props => {
   const navigate = useNavigate()
@@ -38,12 +42,10 @@ const SignupForm = props => {
   }
 
   return (
-    <form
-      autoComplete="off"
-      onSubmit={handleSubmit}
-      className={styles.container}
-    >
-      <div className={styles.inputContainer}>
+    <>
+
+<form>
+<div className={styles.inputContainer}>
         <label htmlFor="name" className={styles.label}>Name</label>
         <input
           type="text"
@@ -98,6 +100,9 @@ const SignupForm = props => {
         </Link>
       </div>
     </form>
+
+    </>
+
   )
 }
 
