@@ -7,7 +7,7 @@ function PostThread(props) {
   const [postThread, setPostThread] = useState({})
 
   useEffect(() => {
-    getThread(location.state.post.url)
+    getThread(location.state.postThread.url)
     .then(postThread => setPostThread(postThread))
   },[])
 return(<>
