@@ -31,6 +31,12 @@ function PostCard({post, user, handleDeletePost}) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+        <Link
+          to='/edit'
+          state={{post}}
+        >
+          Edit
+        </Link>
         <button
         onClick={()=> handleDeletePost(post._id)}
         >

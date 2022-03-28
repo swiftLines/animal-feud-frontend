@@ -5,6 +5,7 @@ import AddPost from './pages/AddPost/AddPost'
 import PostList from './pages/PostList/PostList'
 import NavBar from './components/NavBar/NavBar'
 import PostCard from './components/PostCard/PostCard'
+import EditPost from './pages/EditPost/EditPost'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
@@ -92,6 +93,10 @@ useEffect (() => {
               <Navigate to='/login' />
             }
           />
+          <Route
+            path='/edit'
+            element={<EditPost />}
+          />  
           <Route
             path="/signup"
             element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
