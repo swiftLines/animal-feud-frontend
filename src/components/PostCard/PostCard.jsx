@@ -18,7 +18,7 @@ import EditIcon from '@mui/icons-material/Edit'
 
 function PostCard({post, user, handleDeletePost}) {
   return(
-    <Card sx={{ width: 700, m: 1 }}>
+    <Card sx={{ width: 700, m: .4,}}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {post.owner.name} posted at {post.createdAt}
