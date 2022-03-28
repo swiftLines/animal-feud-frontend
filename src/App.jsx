@@ -4,6 +4,8 @@ import './App.css'
 import AddPost from './pages/AddPost/AddPost'
 import PostList from './pages/PostList/PostList'
 import NavBar from './components/NavBar/NavBar'
+import PostCard from './components/PostCard/PostCard'
+import EditPost from './pages/EditPost/EditPost'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
@@ -13,6 +15,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as postService from './services/postService'
 import * as commentService from './services/commentService'
+
 
 const App = () => {
   const [posts, setPosts] = useState([])
@@ -30,6 +33,12 @@ useEffect (() => {
     navigate('/feed')
   }
   console.log(posts)
+
+  const handleDeletePost = id => {
+    
+    postService.deleteOne(id)
+    setPosts(posts.filter(post => post._id !== id))
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -74,11 +83,20 @@ useEffect (() => {
           <Route
             path='/feed'
             element={
+              user ?
               <PostList
-                posts={posts}  
+                posts={posts} 
+                handleDeletePost={handleDeletePost}
+                user={user} 
               />
+              :
+              <Navigate to='/login' />
             }
           />
+          <Route
+            path='/edit'
+            element={<EditPost />}
+          />  
           <Route
             path="/signup"
             element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
