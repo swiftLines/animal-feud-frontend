@@ -28,7 +28,7 @@ const PostList = (props) => {
           key={post._id}
           post={post}
           handleDeletePost={props.handleDeletePost}
-          
+          handleGetThread={props.handleGetThread}
           />
 
         ))}

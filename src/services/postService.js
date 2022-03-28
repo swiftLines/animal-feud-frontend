@@ -28,12 +28,12 @@ async function create(post){
 
 
 function getThread(post) {
-  return fetch(`${BASE_URL}/${post.get('_id')}`, {
+  console.log(post._id)
+  return fetch(`${BASE_URL}/${post._id}`, {
     method: 'GET',
     headers: {
       'Authorization' : `Bearer ${tokenService.getToken()}`
     },
-    body: JSON.stringify(post)
   })
   .then(res => res.json())
 }
