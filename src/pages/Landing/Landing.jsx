@@ -39,7 +39,9 @@ const Landing = ({ user }) => {
             fontSize="15px"
             sx={{ width: "50%" }}
         >
-          <Paper>
+          <Paper
+          elevation={4} sx={{ width: "100%", height: "30vh", p: "1rem"}}
+          >
 
             <h1>Animal Feud</h1>
             <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quod ut possimus obcaecati odit suscipit quibusdam praesentium nulla sapiente, sit id reiciendis nihil nam, cupiditate aliquid numquam veritatis, maiores consequatur!</h3>

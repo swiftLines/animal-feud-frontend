@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.css'
 import * as authService from '../../services/authService'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper'
 
 const LoginForm = props => {
   const [formData, setFormData] = useState({
@@ -27,40 +31,49 @@ const LoginForm = props => {
   }
 
   return (
-    <form
-      autoComplete="off"
-      onSubmit={handleSubmit}
-      className={styles.container}
+<>
+  <Box
+  display="flex" 
+  justifyContent="center" 
+  alignItems="center"
+  sx={{ width: "70%" }}
+  >
+  <Paper 
+  elevation={4} sx={{ width: "100%", p: "1rem" }}
+  >
+    <form 
+    autoComplete='off'
+    onSubmit={handleSubmit}
     >
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
-        <input
-          type="text"
-          autoComplete="off"
-          id="email"
-          value={formData.email}
-          name="email"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="password"
-          value={formData.pw}
-          name="pw"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <button className={styles.button}>Log In</button>
-        <Link to="/">
-          <button>Cancel</button>
-        </Link>
-      </div>
+      <TextField
+          margin="normal"
+          fullWidth
+          required
+        type="text"
+        autoComplete='off'
+        label="Email"
+        id="email"
+        value={formData.email}
+        name="email"
+        onChange={handleChange}
+      />
+      <TextField
+        margin="normal"
+        fullWidth
+        required
+        label="Password"
+        type="password"
+        id="password"
+        value={formData.pw}
+        name="pw"
+        onChange={handleChange}
+      />
+      <Button type="submit"> Submit </Button>
     </form>
+  </Paper>
+  </Box>
+</>
+
   )
 }
 
