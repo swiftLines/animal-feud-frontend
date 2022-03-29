@@ -22,6 +22,8 @@ const PostList = (props) => {
   });
   return (
     <main className={styles.container}>
+      
+
       <h1>Post Feed</h1>
         {props.posts.map(post => (
           <PostCard
