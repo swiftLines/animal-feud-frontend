@@ -81,7 +81,25 @@ const AddPost = (props) => {
       </Button>
       </Paper>
     </Box>
-  
+      <h4>Add your evidence:</h4>
+      <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
+        <div>
+          <input type="text" 
+          name="source"
+          id="source-input"
+          value={formData.source}
+          onChange={handleChange}
+          />
+          <textarea
+          type="text" 
+          name="notes"
+          id="notes-input" 
+          cols="30" rows="10"
+          value={formData.notes}
+          onChange={handleChange}
+          />
+        </div>
+      </form>
     </>
   );
 }

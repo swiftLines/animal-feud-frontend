@@ -26,7 +26,8 @@ function PostCard({post, user, handleDeletePost}) {
         </Typography>
         <Typography variant="h5" component="div">
           <Link 
-          to={url}>
+          to={url}
+          state={{post}}>
             <h2>{post.content}</h2>
           </Link>
         </Typography>
