@@ -16,7 +16,7 @@ import CardMedia from '@mui/material/CardMedia';
 function PostCard({post, user, handleDeletePost}) {
   const url = '/thread/'+post._id
   return(
-    <Card sx={{ width: .9, m: 1, height:"100%"}}>
+    <Card sx={{ width: .9, maxWidth: 700, m: 1, height:"100%"}}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {post.owner.name} posted at {post.createdAt}
