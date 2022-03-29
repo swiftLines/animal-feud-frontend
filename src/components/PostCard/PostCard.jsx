@@ -34,10 +34,10 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-  // const handleSubmit = evt => {
-  //   evt.preventDefault()
-    
-  // }
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    handleAddComment(formData)
+  }
 
   return (
     <Card sx={{ width: .9, m: 1, height: "100%" }}>
@@ -71,19 +71,25 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             <EditIcon />
           </Link>
         </IconButton>
-        <form autoComplete="off" ref={formElement} onSubmit={handleAddComment}>
+        <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
           <label htmlFor="comment-input"></label>
           <input
             type='text'
             id='comment-input'
             name='comment'
+            placeholder='Leave Comment'
             value={formData.content}
             onChange={handleChange}
-            // disabled={!validForm}
             required
           />
+          <button
+            type='submit'
+            disabled={!validForm}
+          >
+            Add Comment
+          </button>
         </form>
-        {/* collapsable comment section below? */}
+        
       </CardContent>
     </Card>
   )
