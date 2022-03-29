@@ -41,12 +41,12 @@ useEffect (() => {
 
   const handleUpdatePost = updatedPostData => {
     postService.update(updatedPostData)
-    // .then(updatedPost => {
+    .then(updatedPost => {
     const newPostsArray = posts.map(post => 
       post._id === updatedPostData._id ? updatedPostData : post)
     setPosts(newPostsArray)
     navigate('/feed')
-  // })
+  })
   }
 
   const handleLogout = () => {
@@ -60,7 +60,6 @@ useEffect (() => {
   }
 
   const handleGetThread = id => {
-    console.log(id)
     postService.getThread(id)
   }
 
@@ -78,7 +77,7 @@ useEffect (() => {
             }
         />
         <Route
-            path='/thread'
+            path='/thread/:threadId'
             element={
               <PostThread 
                 handleGetThread={handleGetThread}
