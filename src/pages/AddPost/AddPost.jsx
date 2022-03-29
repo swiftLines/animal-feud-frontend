@@ -2,7 +2,8 @@ import { useState, useRef, useEffect, } from "react"
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera'
 import Button from '@mui/material/Button';
 import styles from './AddPost.module.css'
 import { Paper } from "@mui/material";
@@ -25,7 +26,14 @@ const AddPost = (props) => {
   
   const handleSubmit = evt => {
     evt.preventDefault()
-    props.handleAddPost(formData)
+    const postFormData = new FormData()
+    postFormData.append('photo', formData.photo)
+    postFormData.append('content', formData.content)
+    props.handleAddPost(postFormData)
+  }
+
+  const handleChangePhoto = (evt) => {
+    setFormData({...formData, photo: evt.target.files[0]})
   }
 
   return (
@@ -52,7 +60,7 @@ const AddPost = (props) => {
         justifyContent="center"
         component="form"
         sx={{
-          '& > :not(style)': { m: 1, width: '50ch' },
+          '& > :not(style)': { m: 1, width: '50ch', height: '35ch' },
         }}
         ref={formElement} onSubmit={handleSubmit} autoComplete="off">
         <Paper
@@ -71,12 +79,25 @@ const AddPost = (props) => {
         onChange={handleChange}
         required
         />
-      
+      <label htmlFor="icon-button-photo">
+        <IconButton color="primary" component="span">
+          <PhotoCamera fontSize="large" />
+        </IconButton>
+      </label>
+      <input
+        // sx={{m: ".5rem", width:"80%" }}
+        type="file"
+        className="form-control"
+        id="photo-upload"
+        name="photo"
+        onChange={handleChangePhoto}
+        />
       <Button 
-      variant="contained"
-      type="submit"
-      disabled={!validForm}
-      >
+        sx={{m: ".5rem", width:"50%" }}
+        variant="contained"
+        type="submit"
+        disabled={!validForm}
+      > 
         Add Post
       </Button>
       </Paper>

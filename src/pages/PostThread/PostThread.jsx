@@ -17,6 +17,12 @@ return(<>
   <div>
     <h1>Post Thread</h1>
     <h4>{postThread.owner?.name}</h4>
+    <img
+          component="img"
+          height="300"
+          src={postThread.photo}
+          alt=''
+        />
     <h2> {postThread.content} </h2>
     <footer>{postThread.createdAt}</footer>
   </div>
