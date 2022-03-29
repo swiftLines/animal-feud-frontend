@@ -36,7 +36,7 @@ const LoginForm = props => {
   display="flex" 
   justifyContent="center" 
   alignItems="center"
-  sx={{ width: "70%" }}
+  sx={{ width: "100%" }}
   >
   <Paper 
   elevation={4} sx={{ width: "100%", p: "1rem" }}
