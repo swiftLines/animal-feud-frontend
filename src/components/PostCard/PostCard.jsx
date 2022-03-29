@@ -17,6 +17,7 @@ import EditIcon from '@mui/icons-material/Edit'
 
 
 function PostCard({post, user, handleDeletePost}) {
+  const url = '/thread/'+post._id
   return(
     <Card sx={{ width: .9, m: 1, height:"100%"}}>
       <CardContent>
@@ -24,8 +25,9 @@ function PostCard({post, user, handleDeletePost}) {
           {post.owner.name} posted at {post.createdAt}
         </Typography>
         <Typography variant="h5" component="div">
-          <Link to="/thread">
-            <h4>{post.content}</h4>
+          <Link 
+          to={url}>
+            <h2>{post.content}</h2>
           </Link>
         </Typography>
           <IconButton aria-label="add to favorites">
