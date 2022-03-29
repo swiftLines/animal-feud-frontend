@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, } from "react"
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
+
 import Button from '@mui/material/Button';
 import styles from './AddPost.module.css'
 import { Paper } from "@mui/material";
@@ -30,7 +30,21 @@ const AddPost = (props) => {
 
   return (
     <>
-          <h1>AddPost</h1>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        sx={{
+          '& > :not(style)': { m: 1, width: '50ch' },
+        }}autoComplete="off">
+        <Paper
+          elevation={4} sx={{ width: "100%", height: "2ewjf0vh", p: "1rem"}}
+          >
+          <h1>Join The Conversation</h1>
+       </Paper>
+      </Box>
       <Box
         display="flex"
         flexDirection="column"
@@ -38,14 +52,14 @@ const AddPost = (props) => {
         justifyContent="center"
         component="form"
         sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
+          '& > :not(style)': { m: 1, width: '50ch' },
         }}
         ref={formElement} onSubmit={handleSubmit} autoComplete="off">
         <Paper
-          elevation={4} sx={{ width: "100%", height: "2ewjf0vh", p: "1rem"}}
+          elevation={4} sx={{ width: "100%", height: "20vh", p: "1rem"}}
         >
       <TextField 
-        sx={{p: ".5rem", }}
+        sx={{p: ".5rem", width:"100%" }}
         label="Add post here"
         variant="outlined" size="large" 
         type="text"

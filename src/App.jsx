@@ -15,7 +15,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as postService from './services/postService'
 import * as commentService from './services/commentService'
-
+import Drawer from './components/Drawer/Drawer'
 
 const App = () => {
   const [posts, setPosts] = useState([])
@@ -66,8 +66,9 @@ useEffect (() => {
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
-      <main>
+      {/* <NavBar user={user} handleLogout={handleLogout} /> */}
+      <Drawer user={user} handleLogout={handleLogout} />
+      
         <Routes>
         <Route
             path='/add'
@@ -131,7 +132,7 @@ useEffect (() => {
             element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
           />
         </Routes>
-      </main>
+    
     </>
   )
 }

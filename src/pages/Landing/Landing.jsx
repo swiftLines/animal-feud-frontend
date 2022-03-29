@@ -57,12 +57,13 @@ const Landing = ({ user }) => {
           alignItems="center"
           sx={{ width: "50%" }}
         >
-            <Paper 
-      elevation={4} sx={{ width: "100%", height: "20vh", p: "2rem"}}
-      >
-        <Button href="/login" variant="contained" size='large' sx={{ width: "100%", p: "1rem", m: ".5rem"}}>Login</Button>
-        <Button href="/signup" variant="outlined" size='large' sx={{ width: "100%", p: "1rem", m: ".5rem"}}>Sign Up</Button>
-        </Paper>
+          <Paper 
+          
+           elevation={4} sx={{ width: "100%", height: "20vh", p: "2rem"}}
+          >
+            <Button href="/login" variant="contained" size='large' sx={{ width: "100%", p: "1rem", m: ".5rem"}}>Login</Button>
+            <Button href="/signup" variant="outlined" size='large' sx={{ width: "100%", p: "1rem", m: ".5rem"}}>Sign Up</Button>
+          </Paper>
         </Box>
       </section>
     </main>

@@ -18,14 +18,14 @@ import EditIcon from '@mui/icons-material/Edit'
 
 function PostCard({post, user, handleDeletePost}) {
   return(
-    <Card sx={{ width: 700, m: .4,}}>
+    <Card sx={{ width: .9, m: 1, height:"100%"}}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {post.owner.name} posted at {post.createdAt}
         </Typography>
         <Typography variant="h5" component="div">
           <Link to="/thread">
-            <h2>{post.content}</h2>
+            <h4>{post.content}</h4>
           </Link>
         </Typography>
           <IconButton aria-label="add to favorites">
