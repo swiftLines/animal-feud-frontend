@@ -20,6 +20,15 @@ const PostList = (props) => {
     right: 0,
     margin: '0 auto',
   });
+
+  const style = {
+    margin: 30,
+    top: 'auto',
+    right: 20,
+    bottom: 20,
+    left: 'auto',
+    position: 'fixed',
+};
   return (
     <main className={styles.container}>
       
@@ -34,8 +43,18 @@ const PostList = (props) => {
           />
 
         ))}
+    
+      
+      <Fab color="secondary" aria-label="add" position="fixed"  style={style}>
+        <Link to="/add">
+          <Tooltip title="Create Post">
+            <AddIcon />
+          </Tooltip>
+        </Link>
+      </Fab>
+      
 
-      <AppBar position="fixed"  sx={{ top: 'auto', bottom: 0 }}>
+      {/* <AppBar position="fixed"  sx={{ top: 'auto', bottom: 0 }}>
         <Toolbar>
           <StyledFab color="secondary" aria-label="add">
             <Link to="/add">
@@ -46,7 +65,7 @@ const PostList = (props) => {
           </StyledFab>
           <Box sx={{ flexGrow: 1 }} />
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
     </main>
             
   );
