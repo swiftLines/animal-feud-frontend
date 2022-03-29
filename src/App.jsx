@@ -33,6 +33,15 @@ useEffect (() => {
     navigate('/feed')
   }
 
+  const handleAddEvidence = async evidenceData => {
+    const evidence = await postService.createEvidence(evidenceData)
+    setPosts([...posts, evidence])
+  }
+
+  const handleGetThread = id => {
+    postService.getThread(id)
+  }
+
   const handleDeletePost = id => {
     
     postService.deleteOne(id)
@@ -59,9 +68,7 @@ useEffect (() => {
     setUser(authService.getUser())
   }
 
-  const handleGetThread = id => {
-    postService.getThread(id)
-  }
+
 
   return (
     <>
