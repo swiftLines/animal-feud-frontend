@@ -28,15 +28,17 @@ async function create(post){
 
 
 function getThread(post) {
-  console.log(post._id)
-  return fetch(`${BASE_URL}/${post._id}`, {
+  console.log(`${BASE_URL}/${post}`)
+  return fetch(`${BASE_URL}/${post}`, {
     method: 'GET',
     headers: {
       'Authorization' : `Bearer ${tokenService.getToken()}`
     },
+    
   })
   .then(res => res.json())
 }
+
 
 function getAll(){
   return fetch(BASE_URL, {
@@ -47,19 +49,19 @@ function getAll(){
   .then(res => res.json())
 }
 
-function deleteOne(id) {
-  return fetch(`${BASE_URL}/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`
-    },
+function update(post) {
+  return fetch(`${BASE_URL}/${post._id}`, {
+    method: 'PUT',
+    headers: {'content-type': 'application/json'},
+    body: post
   })
   .then(res => res.json())
 }
 
-function update(post) {
-  return fetch(`${BASE_URL}/${post._id}`, {
-    method: 'PUT',
+
+function deleteOne(id) {
+  return fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
     headers: {
       'content-type': 'application/json',
       'Authorization': `Bearer ${tokenService.getToken()}`
@@ -73,5 +75,5 @@ export {
   getAll,
   getThread,
   deleteOne,
-  update
+  update,
 }

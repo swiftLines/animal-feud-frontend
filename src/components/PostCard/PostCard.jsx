@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -15,60 +15,79 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Icon } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit'
 
-function PostCard({post, user, handleDeletePost}) {
+function PostCard({ post, user, handleDeletePost }) {
+  const url = '/thread/' + post._id
+  const formElement = useRef()
+  const [validForm, setValidForm] = useState(false)
+  const [formData, setFormData] = useState({
+    content: '',
+  })
 
-const [formData, setFormData] = useState({
-  content: '',
-})
+  useEffect(() => {
+    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+  }, [formData])
 
+  // console.log(formElement)
 
-  return(
-    <Card sx={{ width: 700, m: 1 }}>
+  const handleChange = evt => {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+  }
+
+  return (
+    <Card sx={{ width: .9, m: 1, height: "100%" }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {post.owner.name} posted at {post.createdAt}
         </Typography>
         <Typography variant="h5" component="div">
-          <Link to="/thread">
+          <Link
+            to={url}>
             <h2>{post.content}</h2>
           </Link>
         </Typography>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          <IconButton 
-            ria-label="delete"
-            onClick={()=> handleDeletePost(post._id)}
-            >
-            <DeleteIcon />
-          </IconButton>
-          <IconButton>
-            <Link
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+        <IconButton aria-label="share">
+          <ShareIcon />
+        </IconButton>
+        <IconButton
+          ria-label="delete"
+          onClick={() => handleDeletePost(post._id)}
+        >
+          <DeleteIcon />
+        </IconButton>
+        <IconButton>
+          <Link
             to='/edit'
-            state={{post}}
-            >
-              <EditIcon/>
-            </Link>
-          </IconButton>
-          <form action="">
-            <label htmlFor="comment-input"></label>
-            <input
-              type='text'
-              id='comment-input'
-              name='comment'
-              required
-            />
-          </form>
-          {/* collapsable comment section below? */}
+            state={{ post }}
+          >
+            <EditIcon />
+          </Link>
+        </IconButton>
+        <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
+          <label htmlFor="comment-input"></label>
+          <input
+            type='text'
+            id='comment-input'
+            name='comment'
+            value={formData.content}
+            onChange={handleChange}
+            // disabled={!validForm}
+            required
+          />
+        </form>
+        {/* collapsable comment section below? */}
       </CardContent>
     </Card>
   )
 }
 
-          
+
 
 
 export default PostCard

@@ -15,7 +15,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as postService from './services/postService'
 import * as commentService from './services/commentService'
-
+import Drawer from './components/Drawer/Drawer'
 
 const App = () => {
   const [posts, setPosts] = useState([])
@@ -41,12 +41,12 @@ useEffect (() => {
 
   const handleUpdatePost = updatedPostData => {
     postService.update(updatedPostData)
-    // .then(updatedPost => {
+    .then(updatedPost => {
     const newPostsArray = posts.map(post => 
       post._id === updatedPostData._id ? updatedPostData : post)
     setPosts(newPostsArray)
     navigate('/feed')
-  // })
+  })
   }
 
   const handleLogout = () => {
@@ -60,14 +60,14 @@ useEffect (() => {
   }
 
   const handleGetThread = id => {
-    console.log(id)
     postService.getThread(id)
   }
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
-      <main>
+      {/* <NavBar user={user} handleLogout={handleLogout} /> */}
+      <Drawer user={user} handleLogout={handleLogout} />
+      
         <Routes>
         <Route
             path='/add'
@@ -78,7 +78,7 @@ useEffect (() => {
             }
         />
         <Route
-            path='/thread'
+            path='/thread/:postId'
             element={
               <PostThread 
                 handleGetThread={handleGetThread}
@@ -131,7 +131,7 @@ useEffect (() => {
             element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
           />
         </Routes>
-      </main>
+    
     </>
   )
 }

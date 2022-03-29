@@ -39,7 +39,9 @@ const Landing = ({ user }) => {
             fontSize="15px"
             sx={{ width: "50%" }}
         >
-          <Paper>
+          <Paper
+          elevation={4} sx={{ width: "100%", height: "30vh", p: "1rem"}}
+          >
 
             <h1>Animal Feud</h1>
             <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quod ut possimus obcaecati odit suscipit quibusdam praesentium nulla sapiente, sit id reiciendis nihil nam, cupiditate aliquid numquam veritatis, maiores consequatur!</h3>
@@ -55,12 +57,13 @@ const Landing = ({ user }) => {
           alignItems="center"
           sx={{ width: "50%" }}
         >
-            <Paper 
-      elevation={4} sx={{ width: "100%", height: "20vh", p: "2rem"}}
-      >
-        <Button href="/login" variant="contained" size='large' sx={{ width: "100%", p: "1rem", m: ".5rem"}}>Login</Button>
-        <Button href="/signup" variant="outlined" size='large' sx={{ width: "100%", p: "1rem", m: ".5rem"}}>Sign Up</Button>
-        </Paper>
+          <Paper 
+          
+           elevation={4} sx={{ width: "100%", height: "20vh", p: "2rem"}}
+          >
+            <Button href="/login" variant="contained" size='large' sx={{ width: "100%", p: "1rem", m: ".5rem"}}>Login</Button>
+            <Button href="/signup" variant="outlined" size='large' sx={{ width: "100%", p: "1rem", m: ".5rem"}}>Sign Up</Button>
+          </Paper>
         </Box>
       </section>
     </main>
