@@ -14,8 +14,9 @@ import Fab from '@mui/material/Fab';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Icon } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit'
+import { PropaneSharp } from '@mui/icons-material';
 
-function PostCard({ post, user, handleDeletePost }) {
+function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const url = '/thread/' + post._id
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
@@ -33,9 +34,10 @@ function PostCard({ post, user, handleDeletePost }) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-  const handleSubmit = evt => {
-    evt.preventDefault()
-  }
+  // const handleSubmit = evt => {
+  //   evt.preventDefault()
+    
+  // }
 
   return (
     <Card sx={{ width: .9, m: 1, height: "100%" }}>
@@ -69,7 +71,7 @@ function PostCard({ post, user, handleDeletePost }) {
             <EditIcon />
           </Link>
         </IconButton>
-        <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
+        <form autoComplete="off" ref={formElement} onSubmit={handleAddComment}>
           <label htmlFor="comment-input"></label>
           <input
             type='text'
