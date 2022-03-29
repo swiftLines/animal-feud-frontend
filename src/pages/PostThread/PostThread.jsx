@@ -6,18 +6,21 @@ import { getThread } from '../../services/postService'
 const PostThread = (props) => {
   const location = useLocation()
   const [postThread, setPostThread] = useState({})
-  let params = useParams()
+  const params = useParams()
   console.log(params)
   
   useEffect(() => {
-    getThread(params.threadId)
+    getThread(params.postId)
     .then(postThread => setPostThread(postThread))
+    console.log(postThread)
   },[])
 
 return(<>
   <div>
     <h1>Post Thread</h1>
+    <h4>{postThread.owner.name}</h4>
     <h2> {postThread.content} </h2>
+    <footer>{postThread.createdAt}</footer>
   </div>
 </>)
 }
