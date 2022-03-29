@@ -15,8 +15,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Icon } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit'
 
-
 function PostCard({post, user, handleDeletePost}) {
+
+
+
   return(
     <Card sx={{ width: 700, m: 1 }}>
       <CardContent>
@@ -46,8 +48,18 @@ function PostCard({post, user, handleDeletePost}) {
             state={{post}}
             >
               <EditIcon/>
-              </Link>
-            </IconButton>
+            </Link>
+          </IconButton>
+          <form action="">
+            <label htmlFor="comment-input"></label>
+            <input
+              type='text'
+              id='comment-input'
+              name='comment'
+              required
+            />
+          </form>
+          {/* collapsable comment section below? */}
       </CardContent>
     </Card>
   )
