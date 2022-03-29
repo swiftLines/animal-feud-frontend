@@ -40,6 +40,7 @@ const PostList = (props) => {
           post={post}
           handleDeletePost={props.handleDeletePost}
           handleGetThread={props.handleGetThread}
+          handleAddComment={props.handleAddComment}
           />
 
         ))}
