@@ -78,7 +78,7 @@ useEffect (() => {
             }
         />
         <Route
-            path='/thread/:threadId'
+            path='/thread/:postId'
             element={
               <PostThread 
                 handleGetThread={handleGetThread}

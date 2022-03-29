@@ -28,15 +28,17 @@ async function create(post){
 
 
 function getThread(post) {
-  return fetch(`${BASE_URL}/${post._id}`, {
+  console.log(`${BASE_URL}/${post}`)
+  return fetch(`${BASE_URL}/${post}`, {
     method: 'GET',
     headers: {
       'Authorization' : `Bearer ${tokenService.getToken()}`
     },
-   
+    
   })
   .then(res => res.json())
 }
+
 
 function getAll(){
   return fetch(BASE_URL, {
