@@ -40,35 +40,22 @@ const PostList = (props) => {
           post={post}
           handleDeletePost={props.handleDeletePost}
           handleGetThread={props.handleGetThread}
+          handleAddComment={props.handleAddComment}
           />
 
         ))}
-    
-      
-      <Fab color="secondary" aria-label="add" position="fixed"  style={style}>
+      <Fab color="primary" aria-label="add" position="fixed"  style={style}>
         <Link to="/add">
           <Tooltip title="Create Post">
             <AddIcon />
           </Tooltip>
         </Link>
       </Fab>
-      
-
-      {/* <AppBar position="fixed"  sx={{ top: 'auto', bottom: 0 }}>
-        <Toolbar>
-          <StyledFab color="secondary" aria-label="add">
-            <Link to="/add">
-              <Tooltip title="Create Post">
-              <AddIcon />
-              </Tooltip>
-            </Link>
-          </StyledFab>
-          <Box sx={{ flexGrow: 1 }} />
-        </Toolbar>
-      </AppBar> */}
     </main>
             
   );
 }
+    
+      
 
 export default PostList;

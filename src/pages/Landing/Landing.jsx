@@ -1,74 +1,115 @@
 import styles from './Landing.module.css'
 // import { SketchPicker } from 'react-color'
+import * as React from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm'
 import SignupForm from '../../components/SignupForm/SignupForm'
 import { Button } from '@mui/material'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper'
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 const Landing = ({ user }) => {
   const intro = {
-    backgroundColor: "Black",
     height: "40vh",
     width: "100%",
     color: "white",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "start",
     alignItems: "center",
   
   }
   const start = {
-    backgroundColor: " rgb(26, 190, 182);",
-    height: "60vh",
-    width: "100%",
+    // backgroundColor: " rgb(26, 190, 182)",
+    // height: "90vh",
+    width: "70%",
     color: "white",
     display: "flex",
     alignItems: "center",
     flexDirection: "column"
   }
 
+  const [value, setValue] = React.useState(0);
+
+  const handleTabChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <main>
       <section style={intro}>
         <Box
             display="flex" 
-            justifyContent="center" 
-            alignItems="center"
+            justifyContent="start" 
+    
             textAlign="center"
-            fontSize="15px"
-            sx={{ width: "50%" }}
+            fontSize="30px"
+            backgroundColor= 'transparent'
+            sx={{ width: "100%" }}
         >
-          <Paper
-          elevation={4} sx={{ width: "100%", height: "30vh", p: "1rem"}}
-          >
-
-            <h1>Animal Feud</h1>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quod ut possimus obcaecati odit suscipit quibusdam praesentium nulla sapiente, sit id reiciendis nihil nam, cupiditate aliquid numquam veritatis, maiores consequatur!</h3>
-          </Paper>
-
+            <h1>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h1>
         </Box>
       </section>
       <section style={start}>
-        <h1>Join The Fued Today!</h1>
-        <Box
-          display="flex" 
-          justifyContent="center" 
-          alignItems="center"
-          sx={{ width: "50%" }}
-        >
-          <Paper 
-          
-           elevation={4} sx={{ width: "100%", height: "20vh", p: "2rem"}}
-          >
-            <Button href="/login" variant="contained" size='large' sx={{ width: "100%", p: "1rem", m: ".5rem"}}>Login</Button>
-            <Button href="/signup" variant="outlined" size='large' sx={{ width: "100%", p: "1rem", m: ".5rem"}}>Sign Up</Button>
-          </Paper>
-        </Box>
+      <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleTabChange} aria-label="basic tabs example">
+          <Tab label="Sign Up" {...a11yProps(0)} />
+          <Tab label="Log In" {...a11yProps(1)} />
+        </Tabs>
+      </Box>
+      <TabPanel value={value} index={0}>
+        <SignupForm />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <LoginForm />
+      </TabPanel>
+    </Box>
       </section>
     </main>
 
   )
 }
+        
+ 
+          
+
 
 export default Landing
