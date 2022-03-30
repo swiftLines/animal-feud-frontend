@@ -9,7 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit'
-import CardMedia from '@mui/material/CardMedia';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 
 function PostCard({ post, user, handleDeletePost, handleAddComment }) {
@@ -18,6 +19,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
     content: '',
+    comment: '',
   })
 
   useEffect(() => {
@@ -33,10 +35,11 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const handleSubmit = evt => {
     evt.preventDefault()
     handleAddComment(formData)
+    
   }
 
   return(
-    <Card sx={{ width: .9, maxWidth: 700, m: 1, height:"100%"}}>
+    <Card sx={{ width: .9, maxWidth: 700, m: 1, height:"100%", borderColor:"tan", borderStyle:'solid'}}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {post.owner.name} posted at {post.createdAt}
@@ -57,7 +60,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton aria-label="share" >
           <ShareIcon />
         </IconButton>
         <IconButton
@@ -74,23 +77,28 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             <EditIcon />
           </Link>
         </IconButton>
-        <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
+        <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}
+        >
           <label htmlFor="comment-input"></label>
-          <input
+          <TextField
+          sx={{m: ".5rem"}}
             type='text'
+            fullWidth
             id='comment-input'
             name='comment'
             placeholder='Leave Comment'
-            value={formData.content}
+            value={formData.comment}
             onChange={handleChange}
             required
           />
-          <button
+          <Button
+            sx={{m: ".5rem", width:"30%" }}
+            variant='contained'
             type='submit'
             disabled={!validForm}
           >
             Add Comment
-          </button>
+          </Button>
         </form>
         
       </CardContent>

@@ -99,7 +99,11 @@ const DrawerLeft = ({user, handleLogout})  => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Animal Fued
+            <img
+              src='https://res.cloudinary.com/nell1818/image/upload/v1648613886/Animal%20Fued/animalFuedLogo_1_qa5atx.png'
+              alt=''
+              height="60"
+            />
           </Typography>
         </Toolbar>
       </AppBar>

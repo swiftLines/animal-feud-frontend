@@ -1,7 +1,7 @@
 main {
   display: flex;
-  flex-direction: column;
+  /* background-image: url(https://res.cloudinary.com/nell1818/image/upload/v1648598859/background_sq3oig.png); */
   align-items: center;
-  background-color: rgb(26, 190, 182);
-  /* height: 90vh; */
+  
+  
 }
