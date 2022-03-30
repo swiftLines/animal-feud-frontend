@@ -132,32 +132,48 @@ const DrawerLeft = ({user, handleLogout})  => {
         <ListItem>
             <Link to="/profiles">
             <ListItemIcon>
-                <PeopleAltIcon />
-                <ListItemText>View Profiles</ListItemText>
+                <PeopleAltIcon 
+                  color='primary'
+                />
+                <ListItemText
+                  sx={{paddingLeft:'1rem'}}
+                >View Profiles</ListItemText>
               </ListItemIcon>
             </Link>
           </ListItem> 
         <ListItem>
             <Link to="/changePassword">
             <ListItemIcon>
-                <PasswordIcon />
-                <ListItemText>Change Password</ListItemText>
+                <PasswordIcon
+                  color='primary'
+                />
+                <ListItemText
+                  sx={{paddingLeft:'1rem'}}
+                >Change Password</ListItemText>
               </ListItemIcon>
             </Link>
           </ListItem> 
         <ListItem>
             <Link to="/feed">
             <ListItemIcon>
-                <DynamicFeedIcon />
-                <ListItemText>Feed</ListItemText>
+                <DynamicFeedIcon 
+                  color='primary'
+                />
+                <ListItemText
+                  sx={{paddingLeft:'1rem'}}
+                >Feed</ListItemText>
               </ListItemIcon>
             </Link>
           </ListItem>  
         <ListItem>
             <Link to="" onClick={handleLogout}>
             <ListItemIcon>
-                <LogoutIcon />
-                <ListItemText>Logout</ListItemText>
+                <LogoutIcon
+                  color='secondary'
+                />
+                <ListItemText
+                  sx={{paddingLeft:'1rem'}}
+                >Logout</ListItemText>
               </ListItemIcon>
             </Link>
           </ListItem>
@@ -167,16 +183,24 @@ const DrawerLeft = ({user, handleLogout})  => {
         <ListItem>
             <Link to="/login">
             <ListItemIcon>
-                <LoginIcon />
-                <ListItemText>Login</ListItemText>
+                <LoginIcon 
+                  color='secondary'
+                />
+                <ListItemText
+                  sx={{paddingLeft:'1rem'}}
+                >Login</ListItemText>
               </ListItemIcon>
             </Link>
           </ListItem>  
           <ListItem>
             <Link to="/signup">
             <ListItemIcon>
-                <AssignmentIcon />
-                <ListItemText>Sign Up</ListItemText>
+                <AssignmentIcon
+                  color='primary'
+                />
+                <ListItemText
+                  sx={{paddingLeft:'1rem'}}
+                >Sign Up</ListItemText>
               </ListItemIcon>
             </Link>
           </ListItem>
