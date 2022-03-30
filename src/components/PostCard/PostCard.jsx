@@ -1,8 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
@@ -11,6 +9,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Divider } from '@mui/material';
+import { Paper } from "@mui/material";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+
 
 
 function PostCard({ post, user, handleDeletePost, handleAddComment }) {
@@ -40,13 +42,20 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   console.log(post._id)
 
   return(
-    <Card
-     sx={{ width: .9, maxWidth: 700, m: 1, height:"100%", }}
-     >
-      <CardContent
-        elevation={4} sx={{ width: "100%", minheight: "40vh"}}
+    <Box
+    display="flex"
+    flexDirection="column"
+    alignItems="center"
+    justifyContent="center"
+    textAlign="center"
+    sx={{
+      '& > :not(style)': { m: 1, width: '70ch' },
+    }}autoComplete="off">
+     
+      <Paper
+        elevation={4} sx={{ width: "80%", minheight: "40vh"}}
       >
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom paddingTop='2rem'>
           {post.owner.name} posted at {post.createdAt}
         </Typography>
         {post.photo ?
@@ -60,26 +69,44 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         <></>
        }
         <Typography variant="h5" component="div">
-          <Link 
-          to={url}
-          state={{post}}>
-            <h2>{post.content}</h2>
-          </Link>
+            <h3>{post.content}</h3>
         </Typography>
-        
+        <Divider
+          sx={{marginBottom: "2rem"}}
+        />
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon fontSize="small" />
+          <FavoriteIcon
+            color='primary'
+            fontSize="small" 
+          />
           Love
         </IconButton>
         <IconButton aria-label="share">
-          <ShareIcon fontSize="small" />
+          <ShareIcon 
+            color='primary'
+            fontSize="small" 
+          />
             Share
+        </IconButton>
+        <IconButton aria-label="share">
+          <VisibilityIcon 
+            color='primary'
+            fontSize="small" 
+          />
+            <Link
+              to={url}
+              state={{post}}>
+            View Thread
+            </Link>
         </IconButton>
         <IconButton
           ria-label="delete"
           onClick={() => handleDeletePost(post._id)}
         >
-          <DeleteIcon fontSize="small" />
+          <DeleteIcon 
+            color='primary'
+            fontSize="small" 
+          />
           Delete
         </IconButton>
         <IconButton>
@@ -87,7 +114,10 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             to='/edit'
             state={{ post }}
           >
-            <EditIcon fontSize="small" />
+            <EditIcon 
+              color='primary' 
+              fontSize="small" 
+            />
             Edit
           </Link>
         </IconButton>
@@ -95,28 +125,34 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         >
           <label htmlFor="comment-input"></label>
           <TextField
-          sx={{m: ".5rem"}}
-            type='text'
-            fullWidth
-            id='comment-input'
-            name='content'
-            placeholder='Leave Comment'
-            value={formData.content}
-            onChange={handleChange}
-            required
+            sx={{m: ".5rem", width: '50ch', paddingTop:'1rem', paddingBottom:'1rem'}}
+              type='text'
+              id='comment-input'
+              name='content'
+              placeholder='Leave Comment'
+              value={formData.content}
+              onChange={handleChange}
+              required
           />
           <Button
-            sx={{m: ".5rem", width:"30%" }}
+            sx={{
+              m: ".5rem", 
+              width:"10%",
+              height:"6vh",
+              marginTop:'1.5rem'
+            }}
             variant='contained'
+            color='success'
             type='submit'
             disabled={!validForm}
+            paddingBottom
           >
-            Add Comment
+            Post
           </Button>
         </form>
         
-      </CardContent>
-    </Card>
+      </Paper>
+    </Box>
   )
 }
 
