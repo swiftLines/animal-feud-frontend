@@ -109,7 +109,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             sx={{m: ".5rem", width:"30%" }}
             variant='contained'
             type='submit'
-            disabled={!validForm}
+            // disabled={!validForm}
           >
             Add Comment
           </Button>
