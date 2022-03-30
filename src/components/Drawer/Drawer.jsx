@@ -100,9 +100,9 @@ const DrawerLeft = ({user, handleLogout})  => {
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             <img
-              src='https://res.cloudinary.com/nell1818/image/upload/v1648613886/Animal%20Fued/animalFuedLogo_1_qa5atx.png'
+              src='https://res.cloudinary.com/nell1818/image/upload/v1648646000/Animal%20Fued/animalFuedLogo_2_g63gxj.png'
               alt=''
-              height="60"
+              height="65"
             />
           </Typography>
         </Toolbar>
