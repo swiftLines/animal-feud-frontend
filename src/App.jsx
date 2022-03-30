@@ -59,8 +59,8 @@ useEffect (() => {
   })
   }
 
-  const handleAddComment = async newCommentData => {
-    const newComment = await commentService.create(newCommentData)
+  const handleAddComment = async (newCommentData, postId) => {
+    const newComment = await commentService.create(newCommentData, postId)
     setComments([...comments, newComment])
     navigate('/feed')
   }
