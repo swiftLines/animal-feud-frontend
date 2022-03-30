@@ -105,15 +105,14 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             onChange={handleChange}
             required
           />
-          <button type='submit'>add</button>
-          {/* <Button
+          <Button
             sx={{m: ".5rem", width:"30%" }}
             variant='contained'
             type='submit'
             disabled={!validForm}
           >
             Add Comment
-          </Button> */}
+          </Button>
         </form>
         
       </CardContent>
