@@ -13,7 +13,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 
-function PostCard({ post, user, handleDeletePost, props }) {
+function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const url = '/thread/' + post._id
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
@@ -33,7 +33,7 @@ function PostCard({ post, user, handleDeletePost, props }) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    props.handleAddComment(formData)
+    handleAddComment(formData, post._id)
     
   }
 
@@ -97,7 +97,7 @@ function PostCard({ post, user, handleDeletePost, props }) {
           sx={{m: ".5rem"}}
             type='text'
             fullWidth
-            id='comment-input'
+            id='content-input'
             name='content'
             placeholder='Leave Comment'
             value={formData.content}
