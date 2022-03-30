@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper'
 
 
+
+
 const SignupForm = props => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
@@ -42,21 +44,26 @@ const SignupForm = props => {
     return !(name && email && password && password === passwordConf)
   }
 
+
+
   return (
     <>
     <Box
      display="flex" 
      justifyContent="center" 
      alignItems="center"
-     sx={{ width: "50%" }}
+     sx={{ width: "100%", height: 780 }}
+     textAlign="center"
     >
       <Paper 
-      elevation={4} sx={{ width: "100%", p: "1rem" }}
+      elevation={4} sx={{ width: "100%", p: "4rem", height: 800 }}
+      
       >
         <form 
         onSubmit={handleSubmit}
         >
           <TextField
+            variant="standard" 
             autoComplete="off"
              margin="normal"
             fullWidth
@@ -69,6 +76,7 @@ const SignupForm = props => {
             onChange={handleChange}
           />
           <TextField
+            variant="standard" 
              margin="normal"
              fullWidth
              required
@@ -80,6 +88,7 @@ const SignupForm = props => {
             onChange={handleChange}
           />
           <TextField
+          variant="standard" 
            margin="normal"
            fullWidth
            required
@@ -91,6 +100,7 @@ const SignupForm = props => {
            onChange={handleChange}
           />
           <TextField
+            variant="standard" 
            margin="normal"
            fullWidth
            required
@@ -105,10 +115,13 @@ const SignupForm = props => {
         </form>
       </Paper>
     </Box>
-
     </>
-
-  )
+ )
 }
+ 
+ 
+ 
+    
+
 
 export default SignupForm

@@ -1,18 +1,15 @@
 import * as tokenService from './tokenService'
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/comments`
 
-async function create(comment){
-  const res = await fetch(BASE_URL, {
+function create(comment){
+  return fetch(BASE_URL, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'Authorization' : `Bearer ${tokenService.getToken()}`
-    },
+      'Authorization' : `Bearer ${tokenService.getToken()}`},
     body: JSON.stringify(comment)
   })
-  const data = await res.json()
-  console.log(data)
-  return data
+    .then(res => res.json())
 }
 
 function getAll(){

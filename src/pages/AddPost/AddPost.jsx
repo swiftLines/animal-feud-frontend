@@ -81,7 +81,14 @@ const AddPost = (props) => {
         />
       <label htmlFor="icon-button-photo">
         <IconButton color="primary" component="span">
-          <PhotoCamera fontSize="large" />
+          <PhotoCamera 
+          fontSize="large"
+          type="file"
+          className="form-control"
+          id="photo-upload"
+          name="photo"
+          onChange={handleChangePhoto}
+          />
         </IconButton>
       </label>
       <input
