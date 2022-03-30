@@ -13,13 +13,12 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 
-function PostCard({ post, user, handleDeletePost, handleAddComment }) {
+function PostCard({ post, user, handleDeletePost, props }) {
   const url = '/thread/' + post._id
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
     content: '',
-    comment: '',
   })
 
   useEffect(() => {
@@ -34,22 +33,31 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    handleAddComment(formData)
+    props.handleAddComment(formData)
     
   }
 
+
   return(
-    <Card sx={{ width: .9, maxWidth: 700, m: 1, height:"100%", borderColor:"tan", borderStyle:'solid'}}>
-      <CardContent>
+    <Card
+     sx={{ width: .9, maxWidth: 700, m: 1, height:"100%", }}
+     >
+      <CardContent
+        elevation={4} sx={{ width: "100%", minheight: "40vh"}}
+      >
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {post.owner.name} posted at {post.createdAt}
         </Typography>
+        {post.photo ?
         <img
           component="img"
           height="140"
           src={post.photo}
           alt=''
         />
+        :
+        <></>
+       }
         <Typography variant="h5" component="div">
           <Link 
           to={url}
@@ -57,24 +65,29 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             <h2>{post.content}</h2>
           </Link>
         </Typography>
+        
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <FavoriteIcon fontSize="small" />
+          Love
         </IconButton>
-        <IconButton aria-label="share" >
-          <ShareIcon />
+        <IconButton aria-label="share">
+          <ShareIcon fontSize="small" />
+            Share
         </IconButton>
         <IconButton
           ria-label="delete"
           onClick={() => handleDeletePost(post._id)}
         >
-          <DeleteIcon />
+          <DeleteIcon fontSize="small" />
+          Delete
         </IconButton>
         <IconButton>
           <Link
             to='/edit'
             state={{ post }}
           >
-            <EditIcon />
+            <EditIcon fontSize="small" />
+            Edit
           </Link>
         </IconButton>
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}
@@ -85,9 +98,9 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             type='text'
             fullWidth
             id='comment-input'
-            name='comment'
+            name='content'
             placeholder='Leave Comment'
-            value={formData.comment}
+            value={formData.content}
             onChange={handleChange}
             required
           />

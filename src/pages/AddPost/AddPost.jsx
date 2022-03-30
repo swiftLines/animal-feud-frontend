@@ -7,7 +7,7 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera'
 import Button from '@mui/material/Button';
 import styles from './AddPost.module.css'
 import { Paper } from "@mui/material";
-
+import Divider from '@mui/material/Divider';
 
 const AddPost = (props) => {
   const formElement = useRef()
@@ -48,7 +48,7 @@ const AddPost = (props) => {
           '& > :not(style)': { m: 1, width: '50ch' },
         }}autoComplete="off">
         <Paper
-          elevation={4} sx={{ width: "100%", height: "2ewjf0vh", p: "1rem"}}
+          elevation={4} sx={{ width: "100%", height: "10vh"}}
           >
           <h1>Join The Conversation</h1>
        </Paper>
@@ -60,7 +60,7 @@ const AddPost = (props) => {
         justifyContent="center"
         component="form"
         sx={{
-          '& > :not(style)': { m: 1, width: '50ch', height: '35ch' },
+          '& > :not(style)': { m: 1, width: '50ch', height: '85ch' },
         }}
         ref={formElement} onSubmit={handleSubmit} autoComplete="off">
         <Paper
@@ -79,15 +79,11 @@ const AddPost = (props) => {
         onChange={handleChange}
         required
         />
+        
       <label htmlFor="icon-button-photo">
         <IconButton color="primary" component="span">
           <PhotoCamera 
           fontSize="large"
-          type="file"
-          className="form-control"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
           />
         </IconButton>
       </label>
@@ -99,6 +95,62 @@ const AddPost = (props) => {
         name="photo"
         onChange={handleChangePhoto}
         />
+            <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        marginTop="3rem"
+        sx={{
+          '& > :not(style)': { m: 1, width: '45ch' },
+        }}autoComplete="off">
+        <Paper
+          elevation={4} sx={{ width: "100%", height: "7vh"}}
+          >
+          <h3>Have Evidence?</h3>
+       </Paper>
+      </Box> 
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        component="form"
+        sx={{
+          '& > :not(style)': { m: 1, width: '45ch', height: '30ch' },
+        }}
+        ref={formElement} onSubmit={handleSubmit} autoComplete="off"
+        >
+        <Paper
+          elevation={4} sx={{ width: "100%", height: "20vh", p: "1rem"}}
+        >
+          <TextField 
+          sx={{p: ".5rem", width:"100%" }}
+          label="Add support statment"
+          variant="outlined" size="large" 
+          type="text"
+          name="content-text"
+          multiline
+          rows={4}
+          id="post-content" 
+          value={formData.support}
+          onChange={handleChange}
+          required
+          />
+          <TextField 
+          sx={{p: ".5rem", width:"100%" }}
+          label="Add a link here to an accredited source."
+          variant="outlined" size="large" 
+          type="link"
+          name="content-link"
+          id="post-content" 
+          value={formData.link}
+          onChange={handleChange}
+          required
+          />
+        </Paper>
+      </Box>
       <Button 
         sx={{m: ".5rem", width:"50%" }}
         variant="contained"
@@ -109,25 +161,8 @@ const AddPost = (props) => {
       </Button>
       </Paper>
     </Box>
-      <h4>Add your evidence:</h4>
-      <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
-        <div>
-          <input type="text" 
-          name="source"
-          id="source-input"
-          value={formData.source}
-          onChange={handleChange}
-          />
-          <textarea
-          type="text" 
-          name="notes"
-          id="notes-input" 
-          cols="30" rows="10"
-          value={formData.notes}
-          onChange={handleChange}
-          />
-        </div>
-      </form>
+    <Divider sx={{marginTop: "3rem"}}/>
+
     </>
   );
 }

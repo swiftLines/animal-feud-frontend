@@ -59,8 +59,10 @@ useEffect (() => {
   })
   }
 
-  const handleAddComment = newCommentData => {
-    setComments([...comments, newCommentData])
+  const handleAddComment = async newCommentData => {
+    const newComment = await commentService.create(newCommentData)
+    setComments([...comments, newComment])
+    navigate('/feed')
   }
 
   const handleLogout = () => {
@@ -111,8 +113,8 @@ useEffect (() => {
             element={
               user ?
               <PostList
-                posts={posts} 
                 handleAddComment={handleAddComment}
+                posts={posts} 
                 handleDeletePost={handleDeletePost}
                 user={user} 
               />
