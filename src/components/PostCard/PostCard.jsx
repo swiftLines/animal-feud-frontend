@@ -29,7 +29,9 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const [formData, setFormData] = useState({
     content: '', 
   })
-  
+
+  console.log(post)
+  console.log(post.isFact)
 
   useEffect(() => {
     console.log('hello hello')
