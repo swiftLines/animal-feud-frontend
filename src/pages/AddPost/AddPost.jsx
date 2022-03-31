@@ -75,7 +75,6 @@ const AddPost = (props) => {
               name="isFact"
               value={formData.isFact ? "checked" : ""}
               onChange={handleChange}
-              // {props.post.isFact ? "checked" : ""}
             />
             Click to Add a Fact Post
           </label>
