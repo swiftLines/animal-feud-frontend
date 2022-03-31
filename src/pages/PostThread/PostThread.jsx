@@ -24,9 +24,9 @@ const PostThread = (props) => {
     .then(postThread => setPostThread(postThread))
   },[])
 
-  //   useEffect(()=> {
-  //   formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
-  // }, [formData])
+    useEffect(()=> {
+    formElement.current?.checkValidity() ? setValidForm(true) : setValidForm(false)
+  }, [formData])
 
     const handleChange = evt => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
