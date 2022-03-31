@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import { Divider } from '@mui/material';
 import { Paper } from "@mui/material";
 import VisibilityIcon from '@mui/icons-material/Visibility';
+// import Link from '@mui/material/Link';
 
 
 
@@ -79,14 +80,14 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             color='primary'
             fontSize="small" 
           />
-          Love
+          <p>Love</p>
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon 
             color='primary'
             fontSize="small" 
           />
-            Share
+            <p>Share</p>
         </IconButton>
         <IconButton aria-label="share">
           <VisibilityIcon 
@@ -95,8 +96,10 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
           />
             <Link
               to={url}
-              state={{post}}>
-            View Thread
+              state={{post}}
+              underline="none">
+                
+                <p>View Thread</p>
             </Link>
         </IconButton>
         <IconButton
@@ -107,25 +110,26 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             color='primary'
             fontSize="small" 
           />
-          Delete
+            <p>Delete</p>
         </IconButton>
         <IconButton>
           <Link
             to='/edit'
             state={{ post }}
+            underline="none"
           >
             <EditIcon 
               color='primary' 
               fontSize="small" 
             />
-            Edit
+              <p>Edit</p>
           </Link>
         </IconButton>
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}
         >
           <label htmlFor="comment-input"></label>
           <TextField
-            sx={{m: ".5rem", width: '50ch', paddingTop:'1rem', paddingBottom:'1rem'}}
+            sx={{m: ".5rem", width: '50ch', paddingBottom:'1rem'}}
               type='text'
               id='comment-input'
               name='content'
@@ -139,7 +143,6 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
               m: ".5rem", 
               width:"10%",
               height:"6vh",
-              marginTop:'1.5rem'
             }}
             variant='contained'
             color='success'

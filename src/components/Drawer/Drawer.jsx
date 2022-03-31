@@ -181,7 +181,7 @@ const DrawerLeft = ({user, handleLogout})  => {
       : 
         <>
         <ListItem>
-            <Link to="/login">
+            <Link to="/login" underline="none">
             <ListItemIcon>
                 <LoginIcon 
                   color='secondary'
@@ -193,7 +193,7 @@ const DrawerLeft = ({user, handleLogout})  => {
             </Link>
           </ListItem>  
           <ListItem>
-            <Link to="/signup">
+            <Link to="/signup" underline="none">
             <ListItemIcon>
                 <AssignmentIcon
                   color='primary'
