@@ -3,8 +3,6 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import './App.css'
 import AddPost from './pages/AddPost/AddPost'
 import PostList from './pages/PostList/PostList'
-import NavBar from './components/NavBar/NavBar'
-import PostCard from './components/PostCard/PostCard'
 import EditPost from './pages/EditPost/EditPost'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -24,9 +22,11 @@ const App = () => {
   const navigate = useNavigate()
 
 useEffect (() => {
+  if(user) {
   postService.getAll()
   .then(allPosts => setPosts(allPosts))
-}, [])
+  }
+}, [user])
 
   const handleAddPost = async newPostData => {
     const newPost = await postService.create(newPostData)
@@ -114,8 +114,8 @@ useEffect (() => {
             element={
               user ?
               <PostList
-                handleAddComment={handleAddComment}
                 posts={posts} 
+                handleAddComment={handleAddComment}
                 handleDeletePost={handleDeletePost}
                 user={user} 
               />

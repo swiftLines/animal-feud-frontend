@@ -27,9 +27,8 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
-    content: '',
+    content: '', 
   })
-  console.log(post)
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
@@ -42,9 +41,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    console.log('hello')
     handleAddComment(formData, post._id)
-    
   }
 
   return(
@@ -105,6 +102,8 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
                 <p>View Thread</p>
             </Link>
         </IconButton>
+        {/* {post.owner?._id === user.profile ?
+        <> */}
         <IconButton>
           <EditIcon 
             color='primary' 
@@ -118,6 +117,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
               <p>Edit</p>
           </Link>
         </IconButton>
+        
         <IconButton
           ria-label="delete"
           onClick={() => handleDeletePost(post._id)}
@@ -128,6 +128,10 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
           />
             <p>Delete</p>
         </IconButton>
+        {/* </>
+          :
+          <></>
+        } */}
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}
         >
           <label htmlFor="comment-input"></label>
@@ -181,8 +185,10 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
               <AccordionDetails>
               
                 {post.comments.length > 0 ?
-                  post.comments.map(comment =>
+                  post.comments.map(comment => (
                     <Box sx={{ minWidth: 275, paddingBottom: "1rem"}}>
+                      
+                      
                       <Card variant="outlined">
                         <CardContent>
                           <Typography variant="h5" component="div">
@@ -191,7 +197,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
                         </CardContent>
                       </Card>
                     </Box>
-                      )
+                      ))
                       :
                     <h4>No Comments</h4>
                     }

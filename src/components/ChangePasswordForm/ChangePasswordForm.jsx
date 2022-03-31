@@ -2,6 +2,11 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './ChangePasswordForm.module.css'
 import * as authService from '../../services/authService'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper'
+
 
 const ChangePasswordForm = props => {
   const navigate = useNavigate()
@@ -24,7 +29,7 @@ const ChangePasswordForm = props => {
     try {
       await authService.changePassword(formData)
       props.handleSignupOrLogin()
-      navigate('/')
+      navigate('/feed')
     } catch (err) {
       props.updateMessage(err.message)
     }
@@ -37,58 +42,66 @@ const ChangePasswordForm = props => {
   }
 
   return (
-    <form
-      autoComplete="off"
-      onSubmit={handleSubmit}
-      className={styles.container}
+    <main className={styles.container}>
+    <Box
+    display="flex" 
+    justifyContent="center" 
+    alignItems="center"
+    sx={{ width: "100%" }}
     >
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Current Password</label>
-        <input
+    <Paper 
+    elevation={4} sx={{ width: "100%", p: "1rem" }}
+    >
+      <form 
+      autoComplete='off'
+      onSubmit={handleSubmit}
+      >
+        <TextField
+            margin="normal"
+            fullWidth
+            required
           type="password"
-          autoComplete="off"
+          autoComplete='off'
+          label="Current Password"
           id="password"
           value={pw}
           name="pw"
           onChange={handleChange}
         />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="newPassword" className={styles.label}>
-          New Password
-        </label>
-        <input
-          type="password"
+        <TextField
+          margin="normal"
+          fullWidth
+          required
           autoComplete="off"
+          label="New Password"
+          type="password"
           id="newPassword"
           value={newPw}
           name="newPw"
           onChange={handleChange}
         />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="newPasswordConf" className={styles.label}>
-          Confirm New Password
-        </label>
-        <input
-          type="password"
+        <TextField
+          margin="normal"
+          fullWidth
+          required
           autoComplete="off"
+          label="Confirm New Password"
+          type="password"
           id="newPasswordConf"
           value={newPwConf}
           name="newPwConf"
           onChange={handleChange}
         />
-      </div>
-      <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>
-          Change Password
-        </button>
-        <Link to="/">
-          <button>Cancel</button>
-        </Link>
-      </div>
-    </form>
+        <Button type="submit"
+        disabled={isFormInvalid()} 
+        >
+        Submit </Button>
+      </form>
+    </Paper>
+    </Box>
+    </main>
   )
 }
+        
 
 export default ChangePasswordForm

@@ -45,7 +45,7 @@ function a11yProps(index) {
 
 const Landing = ({ user }) => {
   const intro = {
-    height: "40vh",
+    height: "100vh",
     width: "100%",
     color: "white",
     display: "flex",
@@ -56,7 +56,7 @@ const Landing = ({ user }) => {
   }
   const start = {
     // backgroundColor: " rgb(26, 190, 182)",
-    // height: "90vh",
+    height: "100vh",
     width: "70%",
     color: "white",
     display: "flex",
@@ -78,7 +78,7 @@ const Landing = ({ user }) => {
             justifyContent="start" 
     
             textAlign="center"
-            fontSize="30px"
+            fontSize="20px"
             backgroundColor= 'transparent'
             sx={{ width: "100%" }}
         >
