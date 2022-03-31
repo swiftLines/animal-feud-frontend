@@ -13,6 +13,7 @@ const AddPost = (props) => {
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
+    isFact: false,
     content: '',
   })
 
@@ -66,6 +67,17 @@ const AddPost = (props) => {
         <Paper
           elevation={4} sx={{ width: "100%", height: "20vh", p: "1rem"}}
         >
+  
+          <label>
+            <input 
+              type="checkbox"
+              name="isFact"
+              value={formData.isFact}
+              onChange={handleChange}
+              // {props.post.isFact ? "checked" : ""}
+            />
+            Click to Add a Fact Post
+          </label>
       <TextField 
         sx={{p: ".5rem", width:"100%" }}
         label="Add post here"
