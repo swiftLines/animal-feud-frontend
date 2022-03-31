@@ -30,6 +30,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
     content: '',
   })
   console.log(post)
+  console.log(post.isFact)
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
