@@ -19,7 +19,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import CommentIcon from '@mui/icons-material/Comment';
 
 
 function PostCard({ post, user, handleDeletePost, handleAddComment }) {
@@ -166,7 +166,19 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
                   >
-                <Typography>View Comments</Typography>
+                    {post.comments.length > 0 ?
+                      <IconButton>
+                        <CommentIcon />
+                        <p>{post.comments.length} </p>
+                      </IconButton>
+                    :
+                     <IconButton>
+                       <CommentIcon />
+                       <p>0</p>
+                     </IconButton>   
+                    }
+                    
+                {/* <Typography>View Comments</Typography> */}
               </AccordionSummary>
               <AccordionDetails>
               
