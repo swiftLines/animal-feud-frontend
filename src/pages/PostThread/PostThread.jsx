@@ -3,11 +3,13 @@ import {useState, useRef, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import { getThread } from '../../services/postService'
 import EvidenceCard from '../../components/EvidenceCard/EvidenceCard'
+import * as authService from '../../services/authService'
 
 
 const PostThread = (props) => {
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
+  const [user, setUser] = useState(authService.getUser())
   const [formData, setFormData] = useState({
     source: '',
     notes: '',
@@ -22,9 +24,9 @@ const PostThread = (props) => {
     .then(postThread => setPostThread(postThread))
   },[])
 
-    useEffect(()=> {
-    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
-  }, [formData])
+  //   useEffect(()=> {
+  //   formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+  // }, [formData])
 
     const handleChange = evt => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
@@ -34,7 +36,7 @@ const PostThread = (props) => {
     evt.preventDefault()
     props.handleAddEvidence(formData, postThread._id)
   }
-
+ 
 return(<>
 
   <div>  
@@ -54,10 +56,13 @@ return(<>
     <EvidenceCard
     key={post._id}
     post={post}
+    handleDeleteEvidence={postThread.handleDeleteEvidence}
     />
     ))}
 
   </div>
+
+  {user.profile === postThread.owner?._id ?
 
   <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
     <h4>Have evidence to support your statement? Provide it here!</h4>
@@ -81,7 +86,9 @@ return(<>
         </div>
         <button type="submit">submit</button>
   </form>
-
+  :
+  <></>
+}
 </>)
 }
 

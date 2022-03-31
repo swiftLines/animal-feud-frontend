@@ -38,13 +38,13 @@ useEffect (() => {
     postService.createEvidence(evidenceData, id)
     .then(newEvidence => setPosts(newEvidence))
   }
+  
 
   const handleGetThread = id => {
     postService.getThread(id)
   }
 
   const handleDeletePost = id => {
-    
     postService.deleteOne(id)
     setPosts(posts.filter(post => post._id !== id))
   }
@@ -59,9 +59,13 @@ useEffect (() => {
   })
   }
 
+
   const handleAddComment = async (newCommentData, postId) => {
-    const newComment = await commentService.create(newCommentData, postId)
-    setComments([...comments, newComment])
+    const updatedPost = await commentService.create(newCommentData, postId)
+    const newPostArray = posts.map(post => 
+      post._id === updatedPost._id ? updatedPost : post
+    )
+    setPosts(newPostArray)
     navigate('/feed')
   }
 
