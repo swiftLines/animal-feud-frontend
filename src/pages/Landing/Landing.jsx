@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
+import { BorderTopRounded } from '@mui/icons-material';
 
 
 function TabPanel(props, handleSignupOrLogin) {
@@ -55,7 +56,7 @@ const Landing = ({ user }) => {
   
   }
   const start = {
-    // backgroundColor: " rgb(26, 190, 182)",
+    backgroundColor: "whiteSmoke",
     height: "100vh",
     width: "70%",
     color: "white",
