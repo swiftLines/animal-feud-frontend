@@ -109,7 +109,7 @@ const AddPost = (props) => {
         />
          
       <Button 
-        sx={{m: ".5rem", width:"50%" }}
+        sx={{m: ".5rem", width:"30%" }}
         variant="contained"
         type="submit"
         disabled={!validForm}

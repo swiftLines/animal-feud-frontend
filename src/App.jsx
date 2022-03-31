@@ -104,7 +104,8 @@ useEffect (() => {
             element={
               <Landing 
                 user={user}
-                posts={posts}  
+                posts={posts}
+                handleSignupOrLogin={handleSignupOrLogin}  
               />
             } 
           />

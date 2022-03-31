@@ -3,16 +3,14 @@ import styles from './Landing.module.css'
 import * as React from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm'
 import SignupForm from '../../components/SignupForm/SignupForm'
-import { Button } from '@mui/material'
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper'
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 
 
-function TabPanel(props) {
+function TabPanel(props, handleSignupOrLogin) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -96,7 +94,7 @@ const Landing = ({ user }) => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <SignupForm />
+        <SignupForm handleSignupOrLogin/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <LoginForm />
