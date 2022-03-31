@@ -60,7 +60,7 @@ const AddPost = (props) => {
         justifyContent="center"
         component="form"
         sx={{
-          '& > :not(style)': { m: 1, width: '50ch', height: '85ch' },
+          '& > :not(style)': { m: 1, width: '50ch', height: '35ch' },
         }}
         ref={formElement} onSubmit={handleSubmit} autoComplete="off">
         <Paper
@@ -95,62 +95,7 @@ const AddPost = (props) => {
         name="photo"
         onChange={handleChangePhoto}
         />
-            <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
-        marginTop="3rem"
-        sx={{
-          '& > :not(style)': { m: 1, width: '45ch' },
-        }}autoComplete="off">
-        <Paper
-          elevation={4} sx={{ width: "100%", height: "7vh"}}
-          >
-          <h3>Have Evidence?</h3>
-       </Paper>
-      </Box> 
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '45ch', height: '30ch' },
-        }}
-        ref={formElement} onSubmit={handleSubmit} autoComplete="off"
-        >
-        <Paper
-          elevation={4} sx={{ width: "100%", height: "20vh", p: "1rem"}}
-        >
-          <TextField 
-          sx={{p: ".5rem", width:"100%" }}
-          label="Add support statment"
-          variant="outlined" size="large" 
-          type="text"
-          name="content-text"
-          multiline
-          rows={4}
-          id="post-content" 
-          value={formData.support}
-          onChange={handleChange}
-          required
-          />
-          <TextField 
-          sx={{p: ".5rem", width:"100%" }}
-          label="Add a link here to an accredited source."
-          variant="outlined" size="large" 
-          type="link"
-          name="content-link"
-          id="post-content" 
-          value={formData.link}
-          onChange={handleChange}
-          required
-          />
-        </Paper>
-      </Box>
+         
       <Button 
         sx={{m: ".5rem", width:"50%" }}
         variant="contained"
