@@ -33,9 +33,9 @@ useEffect (() => {
     navigate('/feed')
   }
 
-  const handleAddEvidence = async evidenceData => {
-    const evidence = await postService.createEvidence(evidenceData)
-    setPosts([...posts, evidence])
+  const handleAddEvidence = (evidenceData, id) => {
+    postService.createEvidence(evidenceData, id)
+    .then(newEvidence => setPosts(newEvidence))
   }
 
   const handleGetThread = id => {
@@ -100,6 +100,7 @@ useEffect (() => {
             element={
               <PostThread 
                 handleGetThread={handleGetThread}
+                handleAddEvidence={handleAddEvidence}
               />
             }
         />
