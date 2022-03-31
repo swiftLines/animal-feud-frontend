@@ -37,13 +37,13 @@ useEffect (() => {
     postService.createEvidence(evidenceData, id)
     .then(newEvidence => setPosts(newEvidence))
   }
+  
 
   const handleGetThread = id => {
     postService.getThread(id)
   }
 
   const handleDeletePost = id => {
-    
     postService.deleteOne(id)
     setPosts(posts.filter(post => post._id !== id))
   }
