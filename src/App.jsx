@@ -34,8 +34,9 @@ useEffect (() => {
   }
 
   const handleAddEvidence = (evidenceData, id) => {
-    postService.createEvidence(evidenceData, id)
+   postService.createEvidence(evidenceData, id)
     .then(newEvidence => setPosts(newEvidence))
+
   }
   
 

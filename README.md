@@ -1,8 +1,9 @@
 # Animal Feud
 ### Created and Developed by The Code Rangers 
-### Rangers: Darnell Dugger, Jeremy Underwood
+### Rangers: Darnell Dugger, Jeremy Underwood, and Claire Thompson
 ---
 <a href="https://animal-feud-fe.herokuapp.com/">Animal Feud</a>
+<br />
 <a href="https://trello.com/b/xElySPW3/animal-feud">Trello Board</a>
 
 Animal Feud is a web application where users can share their thoughts and feelings on all animal related topics. A user can post their opinion on an animal related matter, or a fact about animals that they find interesting, and other users can agree with or refute that user's claims. 
@@ -15,7 +16,7 @@ The purpose of the application is to provide a space for some light-hearted deba
 <img src="https://i.imgur.com/qn16AlF.png" >
 
 ---
-<img src="">
+<img src="https://i.imgur.com/WcCXEsX.png">
 <img src="">
 <img src="">
 <img src="">
