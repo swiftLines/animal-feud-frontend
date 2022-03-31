@@ -29,6 +29,10 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const [formData, setFormData] = useState({
     content: '', 
   })
+
+  console.log(post)
+  console.log(post.isFact)
+
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
@@ -41,9 +45,13 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
+    // console.log('hello')
     handleAddComment(formData, post._id)
   }
 
+  console.log(post._id)
+  console.log(post.isFact)
+ 
   return(
     <Box
     display="flex"
@@ -61,6 +69,13 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom paddingTop='2rem'>
           {post.owner.name} posted at {post.createdAt}
         </Typography>
+        <div>
+        {post.isFact ?
+          <h1>Opinion</h1>
+        :
+          <h1>Fact</h1>
+        }
+        </div>
         {post.photo ?
         <img
           component="img"
