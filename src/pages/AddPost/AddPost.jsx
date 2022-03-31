@@ -28,6 +28,7 @@ const AddPost = (props) => {
   const handleSubmit = evt => {
     evt.preventDefault()
     const postFormData = new FormData()
+    postFormData.append('isFact', formData.isFact)
     postFormData.append('photo', formData.photo)
     postFormData.append('content', formData.content)
     props.handleAddPost(postFormData)
@@ -72,9 +73,8 @@ const AddPost = (props) => {
             <input 
               type="checkbox"
               name="isFact"
-              value={formData.isFact}
+              value={formData.isFact ? "checked" : ""}
               onChange={handleChange}
-              // {props.post.isFact ? "checked" : ""}
             />
             Click to Add a Fact Post
           </label>
