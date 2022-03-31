@@ -66,6 +66,18 @@ const AddPost = (props) => {
         <Paper
           elevation={4} sx={{ width: "100%", height: "20vh", p: "1rem"}}
         >
+        <div>
+          <label>
+            <input 
+              type="checkbox"
+              name="isFact"
+              value={formData.isFact}
+              onChange={handleChange}
+              // {props.post.isFact ? "checked" : ""}
+            />
+            Click to Add a Fact Post
+          </label>
+        </div>
       <TextField 
         sx={{p: ".5rem", width:"100%" }}
         label="Add post here"
