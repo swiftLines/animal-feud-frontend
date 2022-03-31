@@ -41,7 +41,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
     
   }
   console.log(post._id)
-
+  console.log(post.isFact)
   return(
     <Box
     display="flex"
@@ -59,6 +59,13 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom paddingTop='2rem'>
           {post.owner.name} posted at {post.createdAt}
         </Typography>
+        <div>
+        {post.isFact ?
+          <h1>Opinion</h1>
+        :
+          <h1>Fact</h1>
+        }
+        </div>
         {post.photo ?
         <img
           component="img"
