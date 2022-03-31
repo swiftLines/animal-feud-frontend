@@ -19,7 +19,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import CommentIcon from '@mui/icons-material/Comment';
 
 
 function PostCard({ post, user, handleDeletePost, handleAddComment }) {
@@ -87,9 +87,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         <Typography variant="h5" component="div">
             <h3>{post.content}</h3>
         </Typography>
-        <Divider
-          sx={{marginBottom: "2rem"}}
-        />
+        <Divider/>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon
             color='primary'
@@ -97,13 +95,13 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
           />
           <p>Love</p>
         </IconButton>
-        <IconButton aria-label="share">
+        {/* <IconButton aria-label="share">
           <ShareIcon 
             color='primary'
             fontSize="small" 
           />
             <p>Share</p>
-        </IconButton>
+        </IconButton> */}
         <IconButton aria-label="share">
           <VisibilityIcon 
             color='primary'
@@ -117,6 +115,19 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
                 <p>View Thread</p>
             </Link>
         </IconButton>
+        <IconButton>
+          <EditIcon 
+            color='primary' 
+            fontSize="small" 
+          />
+          <Link
+            to='/edit'
+            state={{ post }}
+            style={{ textDecoration: 'none' }}
+          >
+              <p>Edit</p>
+          </Link>
+        </IconButton>
         <IconButton
           ria-label="delete"
           onClick={() => handleDeletePost(post._id)}
@@ -126,19 +137,6 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             fontSize="small" 
           />
             <p>Delete</p>
-        </IconButton>
-        <IconButton>
-          <Link
-            to='/edit'
-            state={{ post }}
-            style={{ textDecoration: 'none' }}
-          >
-            <EditIcon 
-              color='primary' 
-              fontSize="small" 
-            />
-              <p>Edit</p>
-          </Link>
         </IconButton>
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}
         >
@@ -176,7 +174,19 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
                   >
-                <Typography>View Comments</Typography>
+                    {post.comments.length > 0 ?
+                      <IconButton>
+                        <CommentIcon />
+                        <p>{post.comments.length} </p>
+                      </IconButton>
+                    :
+                     <IconButton>
+                       <CommentIcon />
+                       <p>0</p>
+                     </IconButton>   
+                    }
+                    
+                {/* <Typography>View Comments</Typography> */}
               </AccordionSummary>
               <AccordionDetails>
               
