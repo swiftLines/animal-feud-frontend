@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,7 +13,13 @@ import Button from '@mui/material/Button';
 import { Divider } from '@mui/material';
 import { Paper } from "@mui/material";
 import VisibilityIcon from '@mui/icons-material/Visibility';
-// import Link from '@mui/material/Link';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 
 
 
@@ -23,7 +30,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const [formData, setFormData] = useState({
     content: '',
   })
-
+  console.log(post)
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
@@ -40,8 +47,10 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
     handleAddComment(formData, post._id)
     
   }
+
   console.log(post._id)
   console.log(post.isFact)
+ 
   return(
     <Box
     display="flex"
@@ -104,7 +113,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             <Link
               to={url}
               state={{post}}
-              underline="none">
+              style={{ textDecoration: 'none' }}>
                 
                 <p>View Thread</p>
             </Link>
@@ -123,7 +132,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
           <Link
             to='/edit'
             state={{ post }}
-            underline="none"
+            style={{ textDecoration: 'none' }}
           >
             <EditIcon 
               color='primary' 
@@ -160,11 +169,50 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             Post
           </Button>
         </form>
-        
-      </Paper>
-    </Box>
-  )
-}
+        <div>
+          <Divider />
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                  >
+                <Typography>View Comments</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+              
+                {post.comments.length > 0 ?
+                  post.comments.map(comment =>
+                    <Box sx={{ minWidth: 275 }}>
+                      <Card variant="outlined">
+                        <CardContent>
+                          <Typography variant="h5" component="div">
+                            <h3>{comment.content.owner}</h3>
+                            <h5>{comment.content}</h5>
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Box>
+                      )
+                      :
+                    <h4>No Comments</h4>
+                    }
+              </AccordionDetails>
+            </Accordion>
+          </div>
+        </Paper>
+      </Box>
+    )
+  }
+                    
+                   
+                   
+                              
+          
+
+              
+
+           
 
 
 
