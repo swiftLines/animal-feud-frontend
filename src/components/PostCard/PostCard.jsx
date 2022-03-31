@@ -33,7 +33,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    console.log('hello')
+    // console.log('hello')
     handleAddComment(formData, post._id)
     
   }
