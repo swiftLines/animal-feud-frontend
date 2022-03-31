@@ -52,18 +52,18 @@ const SignupForm = props => {
      display="flex" 
      justifyContent="center" 
      alignItems="center"
-     sx={{ width: "100%", height: 780 }}
+     sx={{ width: "100%", height: "100%" }}
      textAlign="center"
     >
       <Paper 
-      elevation={4} sx={{ width: "100%", p: "4rem", height: 800 }}
+      elevation={4} sx={{ width: "100%", p: "1rem", height: "100%" }}
       
       >
         <form 
         onSubmit={handleSubmit}
         >
           <TextField
-            variant="standard" 
+            variant="outlined" 
             autoComplete="off"
              margin="normal"
             fullWidth
@@ -76,7 +76,7 @@ const SignupForm = props => {
             onChange={handleChange}
           />
           <TextField
-            variant="standard" 
+            variant="outlined" 
              margin="normal"
              fullWidth
              required
@@ -88,7 +88,7 @@ const SignupForm = props => {
             onChange={handleChange}
           />
           <TextField
-          variant="standard" 
+          variant="outlined" 
            margin="normal"
            fullWidth
            required
@@ -100,7 +100,7 @@ const SignupForm = props => {
            onChange={handleChange}
           />
           <TextField
-            variant="standard" 
+            variant="outlined" 
            margin="normal"
            fullWidth
            required

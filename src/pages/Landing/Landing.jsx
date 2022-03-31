@@ -10,7 +10,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 
 
-function TabPanel(props) {
+function TabPanel(props, handleSignupOrLogin) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -94,7 +94,7 @@ const Landing = ({ user }) => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <SignupForm />
+        <SignupForm handleSignupOrLogin/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <LoginForm />
