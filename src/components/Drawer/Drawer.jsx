@@ -130,7 +130,7 @@ const DrawerLeft = ({user, handleLogout})  => {
         {user ?
         <>
         <ListItem>
-            <Link to="/profiles">
+            <Link to="/profiles" style={{ textDecoration: 'none' }}>
             <ListItemIcon>
                 <PeopleAltIcon 
                   color='primary'
@@ -142,7 +142,7 @@ const DrawerLeft = ({user, handleLogout})  => {
             </Link>
           </ListItem> 
         <ListItem>
-            <Link to="/changePassword">
+            <Link to="/changePassword" style={{ textDecoration: 'none' }}>
             <ListItemIcon>
                 <PasswordIcon
                   color='primary'
@@ -154,7 +154,7 @@ const DrawerLeft = ({user, handleLogout})  => {
             </Link>
           </ListItem> 
         <ListItem>
-            <Link to="/feed">
+            <Link to="/feed" style={{ textDecoration: 'none' }}>
             <ListItemIcon>
                 <DynamicFeedIcon 
                   color='primary'
@@ -166,7 +166,7 @@ const DrawerLeft = ({user, handleLogout})  => {
             </Link>
           </ListItem>  
         <ListItem>
-            <Link to="" onClick={handleLogout}>
+            <Link to="" onClick={handleLogout} style={{ textDecoration: 'none' }}>
             <ListItemIcon>
                 <LogoutIcon
                   color='secondary'
@@ -181,7 +181,7 @@ const DrawerLeft = ({user, handleLogout})  => {
       : 
         <>
         <ListItem>
-            <Link to="/login" underline="none">
+            <Link to="/login" style={{ textDecoration: 'none' }}>
             <ListItemIcon>
                 <LoginIcon 
                   color='secondary'
@@ -193,7 +193,7 @@ const DrawerLeft = ({user, handleLogout})  => {
             </Link>
           </ListItem>  
           <ListItem>
-            <Link to="/signup" underline="none">
+            <Link to="/signup" style={{ textDecoration: 'none' }}>
             <ListItemIcon>
                 <AssignmentIcon
                   color='primary'
