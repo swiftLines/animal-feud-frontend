@@ -77,9 +77,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         <Typography variant="h5" component="div">
             <h3>{post.content}</h3>
         </Typography>
-        <Divider
-          sx={{marginBottom: "2rem"}}
-        />
+        <Divider/>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon
             color='primary'
@@ -87,13 +85,13 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
           />
           <p>Love</p>
         </IconButton>
-        <IconButton aria-label="share">
+        {/* <IconButton aria-label="share">
           <ShareIcon 
             color='primary'
             fontSize="small" 
           />
             <p>Share</p>
-        </IconButton>
+        </IconButton> */}
         <IconButton aria-label="share">
           <VisibilityIcon 
             color='primary'
@@ -111,24 +109,24 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
           ria-label="delete"
           onClick={() => handleDeletePost(post._id)}
         >
-          <DeleteIcon 
-            color='primary'
+        <IconButton>
+          <EditIcon 
+            color='primary' 
             fontSize="small" 
           />
-            <p>Delete</p>
-        </IconButton>
-        <IconButton>
           <Link
             to='/edit'
             state={{ post }}
             style={{ textDecoration: 'none' }}
           >
-            <EditIcon 
-              color='primary' 
-              fontSize="small" 
-            />
               <p>Edit</p>
           </Link>
+        </IconButton>
+          <DeleteIcon 
+            color='primary'
+            fontSize="small" 
+          />
+            <p>Delete</p>
         </IconButton>
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}
         >
