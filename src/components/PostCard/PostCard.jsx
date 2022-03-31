@@ -18,9 +18,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 
 function PostCard({ post, user, handleDeletePost, handleAddComment }) {
@@ -47,19 +46,6 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
     handleAddComment(formData, post._id)
     
   }
- 
-  const card = (
-    <React.Fragment>
-      <CardContent>
-        <Typography variant="h5" component="div">
-          benevolent
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </React.Fragment>
-  );
 
   return(
     <Box
@@ -186,12 +172,11 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
               
                 {post.comments.length > 0 ?
                   post.comments.map(comment =>
-                    <Box sx={{ minWidth: 275 }}>
+                    <Box sx={{ minWidth: 275, paddingBottom: "1rem"}}>
                       <Card variant="outlined">
                         <CardContent>
                           <Typography variant="h5" component="div">
-                            <h3>{comment.content.owner}</h3>
-                            <h5>{comment.content}</h5>
+                            <p>{comment.content}</p>
                           </Typography>
                         </CardContent>
                       </Card>
