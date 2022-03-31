@@ -105,10 +105,6 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
                 <p>View Thread</p>
             </Link>
         </IconButton>
-        <IconButton
-          ria-label="delete"
-          onClick={() => handleDeletePost(post._id)}
-        >
         <IconButton>
           <EditIcon 
             color='primary' 
@@ -122,6 +118,10 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
               <p>Edit</p>
           </Link>
         </IconButton>
+        <IconButton
+          ria-label="delete"
+          onClick={() => handleDeletePost(post._id)}
+        >
           <DeleteIcon 
             color='primary'
             fontSize="small" 
