@@ -44,12 +44,18 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {post.owner.name} posted at {post.createdAt}
         </Typography>
+        {post.photo ?
         <img
           component="img"
           height="140"
           src={post.photo}
           alt=''
         />
+        :
+        <div></div>
+       }
+
+
         <Typography variant="h5" component="div">
           <Link 
           to={url}

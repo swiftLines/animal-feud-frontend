@@ -1,8 +1,8 @@
 import * as tokenService from './tokenService'
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/comments`
 
-function create(comment){
-  return fetch(BASE_URL, {
+function create(comment, postId){
+  return fetch(`${BASE_URL}/${postId}`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',

@@ -24,9 +24,10 @@ function create(post){
   .then(res => res.json())
 }
 
-async function createEvidence(post, evidence){
-  console.log(`${BASE_URL}/${post._id}/${evidence}`)
-  const res = await fetch(`${BASE_URL}/${post._id}/${evidence}`,{
+function createEvidence(evidence, id){
+  console.log(evidence)
+  console.log(id)
+  return fetch(`${BASE_URL}/${id}/evidence`,{
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -34,16 +35,14 @@ async function createEvidence(post, evidence){
     },
     body: JSON.stringify(evidence)
   })
-  const data = await res.json()
-  return data
 }
 
 
 function getThread(post) {
+  console.log(`${BASE_URL}/${post}`)
   return fetch(`${BASE_URL}/${post}`, {
     method: 'GET',
     headers: {
-      'content-type': 'application/json',
       'Authorization' : `Bearer ${tokenService.getToken()}`
     },
     
@@ -84,6 +83,7 @@ function deleteOne(id) {
   })
   .then(res => res.json())
 }
+
 
 export {
   create,

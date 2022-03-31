@@ -29,6 +29,7 @@ const PostList = (props) => {
     left: 'auto',
     position: 'fixed',
 };
+
   return (
     <main className={styles.container}>
       

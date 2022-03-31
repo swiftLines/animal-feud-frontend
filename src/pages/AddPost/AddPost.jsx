@@ -14,11 +14,14 @@ const AddPost = (props) => {
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
     content: '',
+    source: '',
+    notes: '',
   })
 
   useEffect(() => {
     formElement.current.checkValidity()  ? setValidForm(true) : setValidForm(false)
   }, [formData])
+
 
   const handleChange = evt => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
@@ -29,13 +32,12 @@ const AddPost = (props) => {
     const postFormData = new FormData()
     postFormData.append('photo', formData.photo)
     postFormData.append('content', formData.content)
-    props.handleAddPost(postFormData)
+    console.log(postFormData)
   }
 
   const handleChangePhoto = (evt) => {
     setFormData({...formData, photo: evt.target.files[0]})
   }
-
   return (
     <>
       <Box
@@ -79,6 +81,7 @@ const AddPost = (props) => {
         onChange={handleChange}
         required
         />
+      
       <label htmlFor="icon-button-photo">
         <IconButton color="primary" component="span">
           <PhotoCamera 
@@ -109,27 +112,8 @@ const AddPost = (props) => {
       </Button>
       </Paper>
     </Box>
-      <h4>Add your evidence:</h4>
-      <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
-        <div>
-          <input type="text" 
-          name="source"
-          id="source-input"
-          value={formData.source}
-          onChange={handleChange}
-          />
-          <textarea
-          type="text" 
-          name="notes"
-          id="notes-input" 
-          cols="30" rows="10"
-          value={formData.notes}
-          onChange={handleChange}
-          />
-        </div>
-      </form>
+
     </>
   );
 }
-
 export default AddPost;

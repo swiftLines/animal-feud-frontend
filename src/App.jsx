@@ -4,7 +4,6 @@ import './App.css'
 import AddPost from './pages/AddPost/AddPost'
 import PostList from './pages/PostList/PostList'
 import NavBar from './components/NavBar/NavBar'
-import PostCard from './components/PostCard/PostCard'
 import EditPost from './pages/EditPost/EditPost'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -34,9 +33,9 @@ useEffect (() => {
     navigate('/feed')
   }
 
-  const handleAddEvidence = async evidenceData => {
-    const evidence = await postService.createEvidence(evidenceData)
-    setPosts([...posts, evidence])
+  const handleAddEvidence = (evidenceData, id) => {
+    postService.createEvidence(evidenceData, id)
+    .then(newEvidence => setPosts(newEvidence))
   }
 
   const handleGetThread = id => {
@@ -94,6 +93,7 @@ useEffect (() => {
             element={
               <PostThread 
                 handleGetThread={handleGetThread}
+                handleAddEvidence ={handleAddEvidence}
               />
             }
         />
