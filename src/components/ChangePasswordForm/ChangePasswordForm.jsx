@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from './ChangePasswordForm.module.css'
 import * as authService from '../../services/authService'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -42,12 +41,12 @@ const ChangePasswordForm = props => {
   }
 
   return (
-    <main className={styles.container}>
+    < >
     <Box
     display="flex" 
     justifyContent="center" 
     alignItems="center"
-    sx={{ width: "100%" }}
+    sx={{ width: "50%" }}
     >
     <Paper 
     elevation={4} sx={{ width: "100%", p: "1rem" }}
@@ -99,7 +98,7 @@ const ChangePasswordForm = props => {
       </form>
     </Paper>
     </Box>
-    </main>
+    </>
   )
 }
         

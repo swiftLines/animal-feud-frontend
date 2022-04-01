@@ -21,6 +21,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CommentIcon from '@mui/icons-material/Comment';
+import AddPost from '../../pages/AddPost/AddPost';
 
 
 function PostCard({ post, user, handleDeletePost, handleAddComment }) {
@@ -43,20 +44,21 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const handleSubmit = evt => {
     evt.preventDefault()
     handleAddComment(formData, post._id)
-    
+    setFormData({content:''})
   }
 
  
   return(
+    
     <Box
-    display="flex"
-    flexDirection="column"
-    alignItems="center"
-    justifyContent="center"
-    textAlign="center"
-    sx={{
-      '& > :not(style)': { m: 1, width: '70ch' },
-    }}autoComplete="off">
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      textAlign="center"
+      sx={{
+        '& > :not(style)': { m: 1, width: '70ch', },
+      }}autoComplete="off">
      
       <Paper
         elevation={4} sx={{ width: "80%", minheight: "40vh"}}
@@ -172,7 +174,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         </form>
         <div>
           <Divider />
-            <Accordion>
+            <Accordion >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
