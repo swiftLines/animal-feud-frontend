@@ -56,13 +56,16 @@ const App = () => {
           post._id === updatedPostData._id ? updatedPostData : post)
         setPosts(newPostsArray)
         navigate('/feed')
+        newPostsArray({ post: "" })
       })
+
   }
 
   const handleAddComment = async (newCommentData, postId) => {
     const newComment = await commentService.create(newCommentData, postId)
     setComments([...comments, newComment])
     navigate('/feed')
+
   }
 
   const handleLogout = () => {

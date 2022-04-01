@@ -22,6 +22,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CommentIcon from '@mui/icons-material/Comment';
 import AddPost from '../../pages/AddPost/AddPost';
+import ImageListItem from '@mui/material/ImageListItem';
 
 
 function PostCard({ post, user, handleDeletePost, handleAddComment }) {
@@ -44,9 +45,8 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const handleSubmit = evt => {
     evt.preventDefault()
     handleAddComment(formData, post._id)
-    setFormData({ content: '' })
+    setFormData({ content: '', post: '' })
   }
-
 
   return (
 
@@ -57,7 +57,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
       justifyContent="center"
       textAlign="center"
       sx={{
-        '& > :not(style)': { m: 1, width: '70ch', },
+        '& > :not(style)': { m: 1, width: '62ch', },
       }} autoComplete="off">
 
       <Paper
@@ -73,16 +73,19 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             <h1>Fact</h1>
           }
         </div>
-        {post.photo ?
-          <img
-            component="img"
-            height="140"
-            src={post.photo}
-            alt=''
-          />
-          :
-          <></>
-        }
+        <ImageListItem sx={{ p: '1rem' }}>
+          {post.photo ?
+            <img
+              component="img"
+              height="100%"
+              width="100%"
+              src={post.photo}
+              alt=''
+            />
+            :
+            <></>
+          }
+        </ImageListItem>
         <Typography variant="h5" component="div">
           <h3>{post.content}</h3>
         </Typography>
@@ -116,34 +119,34 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         </IconButton>
         {
           post.owner?._id === user.profile ?
-          <>
-        <IconButton>
-          <EditIcon
-            color='primary'
-            fontSize="small"
-          />
-          <Link
-            to='/edit'
-            state={{ post }}
-            style={{ textDecoration: 'none' }}
-          >
-            <p>Edit</p>
-          </Link>
-        </IconButton>
+            <>
+              <IconButton>
+                <EditIcon
+                  color='primary'
+                  fontSize="small"
+                />
+                <Link
+                  to='/edit'
+                  state={{ post }}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <p>Edit</p>
+                </Link>
+              </IconButton>
 
-        <IconButton
-          ria-label="delete"
-          onClick={() => handleDeletePost(post._id)}
-        >
-          <DeleteIcon
-            color='primary'
-            fontSize="small"
-          />
-          <p>Delete</p>
-        </IconButton>
-          </>
-          :
-          <></>
+              <IconButton
+                ria-label="delete"
+                onClick={() => handleDeletePost(post._id)}
+              >
+                <DeleteIcon
+                  color='primary'
+                  fontSize="small"
+                />
+                <p>Delete</p>
+              </IconButton>
+            </>
+            :
+            <></>
         }
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}
         >
