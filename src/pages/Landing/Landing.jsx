@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import { BorderTopRounded } from '@mui/icons-material';
+import { padding } from '@mui/system';
 
 
 function TabPanel(props, handleSignupOrLogin) {
@@ -46,18 +46,19 @@ function a11yProps(index) {
 
 const Landing = ({ user }) => {
   const intro = {
-    height: "100vh",
+    height: "90vh",
     width: "100%",
     color: "white",
     display: "flex",
     flexDirection: "column",
     justifyContent: "start",
     alignItems: "center",
-  
+    // borderStyle: "solid",
+     backgroundImage: "url(https://res.cloudinary.com/nell1818/image/upload/v1648598859/background_sq3oig.png)" 
   }
   const start = {
     backgroundColor: "whiteSmoke",
-    height: "100vh",
+    height: "90vh",
     width: "70%",
     color: "white",
     display: "flex",
@@ -76,17 +77,18 @@ const Landing = ({ user }) => {
       <section style={intro}>
         <Box
             display="flex" 
-            justifyContent="start" 
-    
             textAlign="center"
             fontSize="20px"
-            backgroundColor= 'transparent'
             sx={{ width: "100%" }}
         >
-            <h1>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h1>
+            <h1 className={styles.title}>
+              Animal Feud is a “social” web app that allows users to to share their most controversial facts and opinions surrounding animals. Users can then get into heated debates about the topic posted in a comment section.
+
+            </h1>
         </Box>
       </section>
       <section style={start}>
+      <div className={styles.tab}>
       <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleTabChange} aria-label="basic tabs example">
@@ -94,13 +96,15 @@ const Landing = ({ user }) => {
           <Tab label="Log In" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        <SignupForm handleSignupOrLogin/>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <LoginForm />
-      </TabPanel>
+        <TabPanel 
+          value={value} index={0}>
+          <SignupForm handleSignupOrLogin/>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <LoginForm />
+        </TabPanel>
     </Box>
+        </div>
       </section>
     </main>
 

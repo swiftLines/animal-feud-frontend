@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
-import styles from './Login.module.css'
 import { Paper } from "@mui/material";
 import Box from '@mui/material/Box';
 
@@ -12,8 +11,8 @@ const LoginPage = props => {
   }
 
   return (
-    <main className={styles.container}>
-            <Box
+    <>
+      <Box
         display="flex"
         flexDirection="column"
         alignItems="center"
@@ -50,7 +49,7 @@ const LoginPage = props => {
       />
        </Paper>
       </Box>
-    </main>
+    </>
   )
 }
 
