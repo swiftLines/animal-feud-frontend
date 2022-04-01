@@ -92,17 +92,6 @@ return(<>
           elevation={4} sx={{ width: "100%", height: "10vh"}}
           >
           <h3>Have evidence to support your statement? Provide it here!</h3>
-
-  <div>
-    <h4>{postThread.owner?.name}'s evidence:</h4>
-    {postThread.evidence?.map(post => (
-    <EvidenceCard
-    key={post._id}
-    post={post}
-    />
-    ))}
-
-
        </Paper>
       </Box>
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
@@ -116,7 +105,7 @@ return(<>
         value={formData.evidence?.source}
         onChange={handleChange}
         />
-             <TextField 
+          <TextField 
         sx={{p: ".5rem", width:"90%", marginTop:".5rem" }}
         label="Add Notes"
         variant="outlined" size="large" 
@@ -151,15 +140,12 @@ return(<>
        </Paper>
       </Box>
        <div>
-            
             {postThread.evidence?.map(post => (
             <EvidenceCard
             key={post._id}
             post={post}
             />
             ))}
-
-
            </div>
        </Paper>
       </Box>
