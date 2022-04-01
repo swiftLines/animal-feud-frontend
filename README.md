@@ -48,3 +48,4 @@ The purpose of the application is to provide a space for some light-hearted deba
 - Upload photos to comments
 - View a user's profile and their post/comment history
 - Implement an animal info feed using a third party API
+- Make mobile responsive
