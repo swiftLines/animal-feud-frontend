@@ -75,7 +75,7 @@ const AddPost = (props) => {
               value={formData.isFact ? "checked" : ""}
               onChange={handleChange}
             />
-            Click to Add a Fact Post
+            Check if your statement is "fact", leave unchecked if an opinion.
           </label>
       <TextField 
         sx={{p: ".5rem", width:"100%" }}

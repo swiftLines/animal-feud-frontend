@@ -53,9 +53,15 @@ return(<>
           '& > :not(style)': { m: 1, width: '70ch' },
         }}autoComplete="off">
         <Paper
-          elevation={4} sx={{ width: "100%", height: "10vh"}}
+          elevation={4} sx={{ width: "100%", height: "15vh"}}
           >
-          <h1>Post Thread</h1>
+          <h2>{postThread.owner?.name}'s</h2>
+          {postThread.isFact ?
+          <h2>opinion </h2>
+          :
+          <h2>fact</h2>
+          }
+          
       </Paper>
       </Box>
       <Box
@@ -70,6 +76,7 @@ return(<>
         <Paper
           elevation={4} sx={{ width: "100%"}}
           >
+        {postThread.photo ? 
           <img
                 style={{paddingTop:'2rem'}}
                 component="img"
@@ -77,8 +84,11 @@ return(<>
                 src={postThread.photo}
                 alt=''
               />
+          :
+          <></>
+          }
+          <p>{postThread.createdAt}</p>
           <h2> {postThread.content} </h2>
-          <footer>{postThread.createdAt}</footer>
           <Box
         display="flex"
         flexDirection="column"

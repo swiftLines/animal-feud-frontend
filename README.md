@@ -12,14 +12,13 @@ The purpose of the application is to provide a space for some light-hearted deba
 
 ---
 
-## ERD
-<img src="https://i.imgur.com/qn16AlF.png" >
+<img src="https://i.imgur.com/DLuVUgM.png">
+<img src="https://i.imgur.com/WcCXEsX.png">
+<img src="https://i.imgur.com/sKNOEk5.png">
 
 ---
-<img src="https://i.imgur.com/WcCXEsX.png">
-<img src="">
-<img src="">
-<img src="">
+## ERD
+<img src="https://i.imgur.com/qn16AlF.png" >
 
 ---
 

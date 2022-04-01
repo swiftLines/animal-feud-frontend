@@ -73,6 +73,7 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+    navigate('/feed')
   }
 
   return (
