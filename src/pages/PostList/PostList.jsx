@@ -41,6 +41,7 @@ const PostList = (props) => {
       </Box>
         {props.posts.map(post => (
           <PostCard
+          user={props.user}
           key={post._id}
           post={post}
           handleDeletePost={props.handleDeletePost}

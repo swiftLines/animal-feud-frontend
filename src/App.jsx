@@ -21,12 +21,12 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
-useEffect (() => {
-  if(user) {
-  postService.getAll()
-  .then(allPosts => setPosts(allPosts))
-  }
-}, [user])
+  useEffect(() => {
+    if (user) {
+      postService.getAll()
+        .then(allPosts => setPosts(allPosts))
+    }
+  }, [user])
 
   const handleAddPost = async newPostData => {
     const newPost = await postService.create(newPostData)
@@ -35,11 +35,10 @@ useEffect (() => {
   }
 
   const handleAddEvidence = (evidenceData, id) => {
-   postService.createEvidence(evidenceData, id)
-    .then(newEvidence => setPosts(newEvidence))
+    postService.createEvidence(evidenceData, id)
+      .then(newEvidence => setPosts(newEvidence))
 
   }
-  
 
   const handleGetThread = id => {
     postService.getThread(id)
@@ -52,12 +51,12 @@ useEffect (() => {
 
   const handleUpdatePost = updatedPostData => {
     postService.update(updatedPostData)
-    .then(updatedPost => {
-    const newPostsArray = posts.map(post => 
-      post._id === updatedPostData._id ? updatedPostData : post)
-    setPosts(newPostsArray)
-    navigate('/feed')
-  })
+      .then(updatedPost => {
+        const newPostsArray = posts.map(post =>
+          post._id === updatedPostData._id ? updatedPostData : post)
+        setPosts(newPostsArray)
+        navigate('/feed')
+      })
   }
 
   const handleAddComment = async (newCommentData, postId) => {
@@ -76,80 +75,78 @@ useEffect (() => {
     setUser(authService.getUser())
   }
 
-
-
   return (
     <>
       {/* <NavBar user={user} handleLogout={handleLogout} /> */}
       <Drawer user={user} handleLogout={handleLogout} />
-      
-        <Routes>
+
+      <Routes>
         <Route
-            path='/add'
-            element={
-              <AddPost 
-                handleAddPost={handleAddPost}
-              />
-            }
+          path='/add'
+          element={
+            <AddPost
+              handleAddPost={handleAddPost}
+            />
+          }
         />
         <Route
-            path='/thread/:postId'
-            element={
-              <PostThread 
-                handleGetThread={handleGetThread}
-                handleAddEvidence={handleAddEvidence}
-              />
-            }
+          path='/thread/:postId'
+          element={
+            <PostThread
+              handleGetThread={handleGetThread}
+              handleAddEvidence={handleAddEvidence}
+            />
+          }
         />
-          <Route 
-            path="/" 
-            element={
-              <Landing 
-                user={user}
-                posts={posts}
-                handleSignupOrLogin={handleSignupOrLogin}  
-              />
-            } 
-          />
-          <Route
-            path='/feed'
-            element={
-              user ?
+        <Route
+          path="/"
+          element={
+            <Landing
+              user={user}
+              posts={posts}
+              handleSignupOrLogin={handleSignupOrLogin}
+            />
+          }
+        />
+        <Route
+          path='/feed'
+          element={
+            user ?
               <PostList
-                posts={posts} 
+                posts={posts}
                 handleAddComment={handleAddComment}
                 handleDeletePost={handleDeletePost}
-                user={user} 
+                user={user}
               />
               :
               <Navigate to='/login' />
-            }
-          />
-          <Route
-            path='/edit'
-            element={
-            <EditPost 
+          }
+        />
+        <Route
+          path='/edit'
+          element={
+            <EditPost
               handleUpdatePost={handleUpdatePost}
             />}
-          />  
-          <Route
-            path="/signup"
-            element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
-          />
-          <Route
-            path="/login"
-            element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
-          />
-          <Route
-            path="/profiles"
-            element={user ? <Profiles /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/changePassword"
-            element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
-          />
-        </Routes>
-    
+        />
+        <Route
+          path="/signup"
+          element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
+        />
+        <Route
+          path="/login"
+          element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
+        />
+        <Route
+          path="/profiles"
+          element={user ? <Profiles /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/changePassword"
+          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
+        />
+      </Routes>
+
     </>
   )
 }

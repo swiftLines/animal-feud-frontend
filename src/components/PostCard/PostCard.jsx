@@ -9,6 +9,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit'
 import TextField from '@mui/material/TextField';
+
 import Button from '@mui/material/Button';
 import { Divider } from '@mui/material';
 import { Paper } from "@mui/material";
@@ -28,7 +29,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
-    content: '', 
+    content: '',
   })
 
 
@@ -43,12 +44,12 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const handleSubmit = evt => {
     evt.preventDefault()
     handleAddComment(formData, post._id)
-    setFormData({content:''})
+    setFormData({ content: '' })
   }
 
- 
-  return(
-    
+
+  return (
+
     <Box
       display="flex"
       flexDirection="column"
@@ -57,39 +58,39 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
       textAlign="center"
       sx={{
         '& > :not(style)': { m: 1, width: '70ch', },
-      }}autoComplete="off">
-     
+      }} autoComplete="off">
+
       <Paper
-        elevation={4} sx={{ width: "80%", minheight: "40vh"}}
+        elevation={4} sx={{ width: "80%", minheight: "40vh" }}
       >
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom paddingTop='2rem'>
           {post.owner.name} posted at {post.createdAt}
         </Typography>
         <div>
-        {post.isFact ?
-          <h1>Opinion</h1>
-        :
-          <h1>Fact</h1>
-        }
+          {post.isFact ?
+            <h1>Opinion</h1>
+            :
+            <h1>Fact</h1>
+          }
         </div>
         {post.photo ?
-        <img
-          component="img"
-          height="140"
-          src={post.photo}
-          alt=''
-        />
-        :
-        <></>
-       }
+          <img
+            component="img"
+            height="140"
+            src={post.photo}
+            alt=''
+          />
+          :
+          <></>
+        }
         <Typography variant="h5" component="div">
-            <h3>{post.content}</h3>
+          <h3>{post.content}</h3>
         </Typography>
-        <Divider/>
+        <Divider />
         <IconButton aria-label="add to favorites">
           <FavoriteIcon
             color='primary'
-            fontSize="small" 
+            fontSize="small"
           />
           <p>Love</p>
         </IconButton>
@@ -101,66 +102,67 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
             <p>Share</p>
         </IconButton> */}
         <IconButton aria-label="share">
-          <VisibilityIcon 
+          <VisibilityIcon
             color='primary'
-            fontSize="small" 
+            fontSize="small"
           />
-            <Link
-              to={url}
-              state={{post}}
-              style={{ textDecoration: 'none' }}>
-                
-                <p>View Thread</p>
-            </Link>
+          <Link
+            to={url}
+            state={{ post }}
+            style={{ textDecoration: 'none' }}>
+
+            <p>View Thread</p>
+          </Link>
         </IconButton>
-        {/* {post.owner?._id === user.profile ?
-        <> */}
+        {
+          post.owner?._id === user.profile ?
+          <>
         <IconButton>
-          <EditIcon 
-            color='primary' 
-            fontSize="small" 
+          <EditIcon
+            color='primary'
+            fontSize="small"
           />
           <Link
             to='/edit'
             state={{ post }}
             style={{ textDecoration: 'none' }}
           >
-              <p>Edit</p>
+            <p>Edit</p>
           </Link>
         </IconButton>
-        
+
         <IconButton
           ria-label="delete"
           onClick={() => handleDeletePost(post._id)}
         >
-          <DeleteIcon 
+          <DeleteIcon
             color='primary'
-            fontSize="small" 
+            fontSize="small"
           />
-            <p>Delete</p>
+          <p>Delete</p>
         </IconButton>
-        {/* </>
+          </>
           :
           <></>
-        } */}
+        }
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}
         >
           <label htmlFor="comment-input"></label>
           <TextField
-            sx={{m: ".5rem", width: '50ch', paddingBottom:'1rem'}}
-              type='text'
-              id='comment-input'
-              name='content'
-              placeholder='Leave Comment'
-              value={formData.content}
-              onChange={handleChange}
-              required
+            sx={{ m: ".5rem", width: '50ch', paddingBottom: '1rem' }}
+            type='text'
+            id='comment-input'
+            name='content'
+            placeholder='Leave Comment'
+            value={formData.content}
+            onChange={handleChange}
+            required
           />
           <Button
             sx={{
-              m: ".5rem", 
-              width:"10%",
-              height:"6vh",
+              m: ".5rem",
+              width: "10%",
+              height: "6vh",
             }}
             variant='contained'
             color='success'
@@ -173,61 +175,61 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
         </form>
         <div>
           <Divider />
-            <Accordion >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-                  >
-                    {post.comments.length > 0 ?
-                      <IconButton>
-                        <CommentIcon />
-                        <p>{post.comments.length} </p>
-                      </IconButton>
-                    :
-                     <IconButton>
-                       <CommentIcon />
-                       <p>0</p>
-                     </IconButton>   
-                    }
-                    
-                {/* <Typography>View Comments</Typography> */}
-              </AccordionSummary>
-              <AccordionDetails>
-              
-                {post.comments.length > 0 ?
-                  post.comments.map(comment => (
-                    <Box key={comment._id} sx={{ minWidth: 275, paddingBottom: "1rem"}}>
-                      
-                      
-                      <Card variant="outlined">
-                        <CardContent>
-                          <Typography variant="h5" component="div">
-                            <p>{comment.content}</p>
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </Box>
-                      ))
-                      :
-                    <h4>No Comments</h4>
-                    }
-              </AccordionDetails>
-            </Accordion>
-          </div>
-        </Paper>
-      </Box>
-    )
-  }
-                    
-                   
-                   
-                              
-          
+          <Accordion >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              {post.comments.length > 0 ?
+                <IconButton>
+                  <CommentIcon />
+                  <p>{post.comments.length} </p>
+                </IconButton>
+                :
+                <IconButton>
+                  <CommentIcon />
+                  <p>0</p>
+                </IconButton>
+              }
 
-              
+              {/* <Typography>View Comments</Typography> */}
+            </AccordionSummary>
+            <AccordionDetails>
 
-           
+              {post.comments.length > 0 ?
+                post.comments.map(comment => (
+                  <Box key={comment._id} sx={{ minWidth: 275, paddingBottom: "1rem" }}>
+
+
+                    <Card variant="outlined">
+                      <CardContent>
+                        <Typography variant="h5" component="div">
+                          <p>{comment.content}</p>
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Box>
+                ))
+                :
+                <h4>No Comments</h4>
+              }
+            </AccordionDetails>
+          </Accordion>
+        </div>
+      </Paper>
+    </Box>
+  )
+}
+
+
+
+
+
+
+
+
+
 
 
 
