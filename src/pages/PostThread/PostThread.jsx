@@ -7,11 +7,13 @@ import Box from '@mui/material/Box';
 import { Paper } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material'
+import * as authService from '../../services/authService'
 
 
 const PostThread = (props) => {
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
+  const [user, setUser] = useState(authService.getUser())
   const [formData, setFormData] = useState({
     source: '',
     notes: '',
@@ -27,7 +29,7 @@ const PostThread = (props) => {
   },[])
 
     useEffect(()=> {
-    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+    formElement.current?.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
 
     const handleChange = evt => {
@@ -38,9 +40,8 @@ const PostThread = (props) => {
     evt.preventDefault()
     props.handleAddEvidence(formData, postThread._id)
   }
-
+ 
 return(<>
-
 
   <Box
         display="flex"
@@ -91,6 +92,16 @@ return(<>
           elevation={4} sx={{ width: "100%", height: "10vh"}}
           >
           <h3>Have evidence to support your statement? Provide it here!</h3>
+
+  <div>
+    <h4>{postThread.owner?.name}'s evidence:</h4>
+    {postThread.evidence?.map(post => (
+    <EvidenceCard
+    key={post._id}
+    post={post}
+    />
+    ))}
+
 
        </Paper>
       </Box>
@@ -148,10 +159,39 @@ return(<>
             />
             ))}
 
+
            </div>
        </Paper>
       </Box>
 
+
+  {user.profile === postThread.owner?._id ?
+
+  <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
+    <h4>Have evidence to support your statement? Provide it here!</h4>
+            <div>
+          <input type="text" 
+          name="source"
+          id="source-input"
+          value={formData.evidence?.source}
+          onChange={handleChange}
+          
+          />
+          <br />
+          <textarea
+          type="text" 
+          name="notes"
+          id="notes-input" 
+          cols="30" rows="10"
+          value={formData.evidence?.notes}
+          onChange={handleChange}
+          />
+        </div>
+        <button type="submit">submit</button>
+  </form>
+  :
+  <></>
+}
 </>)
 }
 

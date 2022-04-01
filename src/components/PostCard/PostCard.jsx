@@ -31,11 +31,8 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
     content: '', 
   })
 
-  console.log(post)
-  console.log(post.isFact)
 
   useEffect(() => {
-    console.log('hello hello')
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
 
@@ -45,13 +42,10 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    // console.log('hello')
     handleAddComment(formData, post._id)
     setFormData({content:''})
   }
 
-  console.log(post._id)
-  console.log(post.isFact)
  
   return(
     

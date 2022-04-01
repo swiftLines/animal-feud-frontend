@@ -1,8 +1,9 @@
-function EvidenceCard({post}) {
+function EvidenceCard({post, handleDeleteEvidence}) {
   return(<>
-    {post.notes}
+    <p>{post.notes}</p>
     <br />
-    {post.source}
+    <p>{post.source}</p>
+    <br />
   </>)
 }
 export default EvidenceCard;
