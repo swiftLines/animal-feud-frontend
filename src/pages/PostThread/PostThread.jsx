@@ -56,7 +56,7 @@ return(<>
           elevation={4} sx={{ width: "100%", height: "10vh"}}
           >
           <h1>Post Thread</h1>
-       </Paper>
+      </Paper>
       </Box>
       <Box
         display="flex"
@@ -92,8 +92,12 @@ return(<>
           elevation={4} sx={{ width: "100%", height: "10vh"}}
           >
           <h3>Have evidence to support your statement? Provide it here!</h3>
-       </Paper>
+
+      </Paper>
       </Box>
+
+      {user.profile === postThread.owner?._id ?
+
         <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
           <TextField 
         sx={{p: ".5rem", width:"90%", marginTop:"1rem" }}
@@ -105,7 +109,7 @@ return(<>
         value={formData.evidence?.source}
         onChange={handleChange}
         />
-          <TextField 
+        <TextField 
         sx={{p: ".5rem", width:"90%", marginTop:".5rem" }}
         label="Add Notes"
         variant="outlined" size="large" 
@@ -124,6 +128,9 @@ return(<>
           Submit
         </Button>
         </form>
+          :
+          <></>
+        }
           <Box
         display="flex"
         flexDirection="column"
@@ -136,49 +143,27 @@ return(<>
         <Paper
           elevation={4} sx={{ width: "100%", height: "10vh"}}
           >
+
           <h4>{postThread.owner?.name}'s evidence:</h4>
-       </Paper>
+      </Paper>
       </Box>
-       <div>
-            {postThread.evidence?.map(post => (
-            <EvidenceCard
-            key={post._id}
-            post={post}
-            />
-            ))}
-           </div>
-       </Paper>
+      <div>
+            
+      {postThread.evidence?.map(post => (
+      <EvidenceCard
+      key={post._id}
+      post={post}
+      />
+      ))}
+
+
+      </div>
+      </Paper>
       </Box>
 
 
-  {user.profile === postThread.owner?._id ?
-
-  <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
-    <h4>Have evidence to support your statement? Provide it here!</h4>
-            <div>
-          <input type="text" 
-          name="source"
-          id="source-input"
-          value={formData.evidence?.source}
-          onChange={handleChange}
-          
-          />
-          <br />
-          <textarea
-          type="text" 
-          name="notes"
-          id="notes-input" 
-          cols="30" rows="10"
-          value={formData.evidence?.notes}
-          onChange={handleChange}
-          />
-        </div>
-        <button type="submit">submit</button>
-  </form>
-  :
-  <></>
-}
 </>)
 }
+
 
 export default PostThread;
