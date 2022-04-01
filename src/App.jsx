@@ -74,6 +74,7 @@ useEffect (() => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+    navigate('/feed')
   }
 
 

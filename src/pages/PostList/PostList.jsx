@@ -36,7 +36,7 @@ const PostList = (props) => {
         <Paper
           elevation={4} sx={{ width: "100%", height: "10vh"}}
           >
-          <h1>Post Feed</h1>
+          <h1>Animal Feud Feed</h1>
        </Paper>
       </Box>
         {props.posts.map(post => (
