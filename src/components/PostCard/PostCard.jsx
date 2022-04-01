@@ -21,7 +21,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CommentIcon from '@mui/icons-material/Comment';
-import AddPost from '../../pages/AddPost/AddPost';
 import ImageListItem from '@mui/material/ImageListItem';
 
 
@@ -45,8 +44,9 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
   const handleSubmit = evt => {
     evt.preventDefault()
     handleAddComment(formData, post._id)
-    setFormData({ content: '', post: '' })
+    setFormData({ content: ''})
   }
+  
 
   return (
 
@@ -57,7 +57,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
       justifyContent="center"
       textAlign="center"
       sx={{
-        '& > :not(style)': { m: 1, width: '62ch', },
+        '& > :not(style)': { m: 1, width: '70ch', },
       }} autoComplete="off">
 
       <Paper
@@ -209,6 +209,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
                       <CardContent>
                         <Typography variant="h5" component="div">
                           <p>{comment.content}</p>
+                          {/* <p>{comment.owner.name}</p> */}
                         </Typography>
                       </CardContent>
                     </Card>

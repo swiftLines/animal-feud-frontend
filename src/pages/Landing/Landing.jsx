@@ -46,7 +46,7 @@ function a11yProps(index) {
 
 const Landing = ({ user }) => {
   const intro = {
-    height: "90vh",
+    height: "100vh",
     width: "100%",
     color: "white",
     display: "flex",
@@ -58,7 +58,7 @@ const Landing = ({ user }) => {
   }
   const start = {
     backgroundColor: "whiteSmoke",
-    height: "90vh",
+    height: "100vh",
     width: "70%",
     color: "white",
     display: "flex",

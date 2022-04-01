@@ -20,16 +20,16 @@ const LoginPage = props => {
         textAlign="center"
         sx={{
           '& > :not(style)': { m: 1, width: '50ch' },
-        }}autoComplete="off">
+        }} autoComplete="off">
         <Paper
-          elevation={4} sx={{ width: "100%", height: "2ewjf0vh", p: "1rem"}}
-          >
-      <h1>Log In</h1>
-      <p>{message}</p>
-         
-       </Paper>
+          elevation={4} sx={{ width: "100%", height: "2ewjf0vh", p: "1rem" }}
+        >
+          <h1>Log In</h1>
+          <p>{message}</p>
+
+        </Paper>
       </Box>
-            <Box
+      <Box
         display="flex"
         flexDirection="column"
         alignItems="center"
@@ -37,17 +37,17 @@ const LoginPage = props => {
         textAlign="center"
         sx={{
           '& > :not(style)': { m: 1, width: '50ch' },
-        }}autoComplete="off">
+        }} autoComplete="off">
         <Paper
-          elevation={4} sx={{ width: "100%", height: "2ewjf0vh", p: "1rem"}}
-          >
+          elevation={4} sx={{ width: "100%", height: "2ewjf0vh", p: "1rem" }}
+        >
 
-         
-      <LoginForm
-        handleSignupOrLogin={props.handleSignupOrLogin}
-        updateMessage={updateMessage}
-      />
-       </Paper>
+
+          <LoginForm
+            handleSignupOrLogin={props.handleSignupOrLogin}
+            updateMessage={updateMessage}
+          />
+        </Paper>
       </Box>
     </>
   )
