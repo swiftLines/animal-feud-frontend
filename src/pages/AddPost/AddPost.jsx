@@ -5,7 +5,6 @@ import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera'
 import Button from '@mui/material/Button';
-import styles from './AddPost.module.css'
 import { Paper } from "@mui/material";
 import Divider from '@mui/material/Divider';
 

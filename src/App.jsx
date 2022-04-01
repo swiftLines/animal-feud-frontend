@@ -17,6 +17,7 @@ import Drawer from './components/Drawer/Drawer'
 
 const App = () => {
   const [posts, setPosts] = useState([])
+  const [comments, setComments] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
@@ -59,16 +60,11 @@ useEffect (() => {
   })
   }
 
-
   const handleAddComment = async (newCommentData, postId) => {
-    const updatedPost = await commentService.create(newCommentData, postId)
-    const newPostArray = posts.map(post => 
-      post._id === updatedPost._id ? updatedPost : post
-    )
-    setPosts(newPostArray)
+    const newComment = await commentService.create(newCommentData, postId)
+    setComments([...comments, newComment])
     navigate('/feed')
   }
-    
 
   const handleLogout = () => {
     authService.logout()
