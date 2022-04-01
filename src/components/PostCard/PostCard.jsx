@@ -57,7 +57,7 @@ function PostCard({ post, user, handleDeletePost, handleAddComment }) {
       justifyContent="center"
       textAlign="center"
       sx={{
-        '& > :not(style)': { m: 1, width: '70ch', },
+        '& > :not(style)': { m: 1, width: '62ch', },
       }} autoComplete="off">
 
       <Paper

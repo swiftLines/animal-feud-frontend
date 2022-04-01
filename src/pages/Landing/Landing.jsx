@@ -59,7 +59,8 @@ const Landing = ({ user }) => {
   const start = {
     backgroundColor: "whiteSmoke",
     height: "100vh",
-    width: "70%",
+    width: "40%",
+    maxWidth: "40%",
     color: "white",
     display: "flex",
     alignItems: "center",
@@ -89,7 +90,12 @@ const Landing = ({ user }) => {
       </section>
       <section style={start}>
       <div className={styles.tab}>
-      <Box sx={{ width: '100%' }}>
+      <Box 
+        display='flex'
+        alignItems='center'
+        flexDirection='column'
+        justifyContent='center'      
+      sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleTabChange} aria-label="basic tabs example">
           <Tab label="Sign Up" {...a11yProps(0)} />

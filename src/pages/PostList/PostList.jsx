@@ -2,7 +2,6 @@ import PostCard from "../../components/PostCard/PostCard";
 import { Link } from 'react-router-dom'
 import * as React from 'react';
 import styles from './PostList.module.css'
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
@@ -19,10 +18,10 @@ const PostList = (props) => {
     bottom: 20,
     left: 'auto',
     position: 'fixed',
-};
+  };
   return (
     <main className={styles.container}>
-      
+
 
       <Box
         display="flex"
@@ -31,37 +30,37 @@ const PostList = (props) => {
         justifyContent="center"
         textAlign="center"
         sx={{
-          '& > :not(style)': { m: 1, width: '70ch' },
-        }}autoComplete="off">
+          '& > :not(style)': { m: 1, width: '62ch' },
+        }} autoComplete="off">
         <Paper
-          elevation={4} sx={{ width: "100%", height: "10vh"}}
-          >
+          elevation={4} sx={{ width: "100%", height: "10vh" }}
+        >
           <h1>Animal Feud Feed</h1>
-       </Paper>
+        </Paper>
       </Box>
-        {props.posts.map(post => (
-          <PostCard
+      {props.posts.map(post => (
+        <PostCard
           user={props.user}
           key={post._id}
           post={post}
           handleDeletePost={props.handleDeletePost}
           handleGetThread={props.handleGetThread}
           handleAddComment={props.handleAddComment}
-          />
+        />
 
-        ))}
-      <Fab color="primary" aria-label="add" position="fixed"  style={style}>
+      ))}
+      <Fab color="primary" aria-label="add" position="fixed" style={style}>
         <Link to="/add">
           <Tooltip title="Create Post">
-            <AddIcon fontSize="large"/>
+            <AddIcon fontSize="large" />
           </Tooltip>
         </Link>
       </Fab>
     </main>
-            
+
   );
 }
-    
-      
+
+
 
 export default PostList;
